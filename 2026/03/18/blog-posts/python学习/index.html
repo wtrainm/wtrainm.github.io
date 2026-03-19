@@ -104,7 +104,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2026-03-18</span>
-            <span class="time">21:42:37</span>
+            <span class="time">11:23:31</span>
           </span>
           
           <!--  Categories  -->
@@ -323,12 +323,60 @@
 <li>单引号定义法</li>
 <li>双引号定义法</li>
 <li>用转义字符()将引号解除效用,变成普通字符串<ul>
-<li>举例: “&quot;注意转义字符位置&quot;“<ul>
+<li>举例: “&#x3D;&#x3D;=&#x3D;”注意转义字符位置&#x3D;&#x3D;=&#x3D;””<ul>
 <li>输出: “注意转义字符位置”</li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+</li>
+<li>字符串的拼接<ul>
+<li>字面量和变量或者变量和变量之间通过”+”拼接完成</li>
+<li><strong>拼接只能适用于字符串</strong></li>
+</ul>
+</li>
+<li>字符串格式化<ul>
+<li>语法<ul>
+<li>&#x3D;&#x3D;<strong>%</strong>&#x3D;&#x3D;表示: 我要占位</li>
+<li><table>
+<thead>
+<tr>
+<th>格式符号</th>
+<th>转化</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%s</td>
+<td>将内容转换成字符串,放入占位位置</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>将内容转换成整数,放入占位位置</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>将内容转换成字浮点型,放入占位位置</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li>写法<ul>
+<li>在字符串之后空格写&#x3D;&#x3D;<strong>%</strong>&#x3D;&#x3D;,然后在需要拼接字符串的地方写上&#x3D;&#x3D;<strong>%s</strong>&#x3D;&#x3D;,如果有多个拼接的变量,需要用&#x3D;&#x3D;<strong>()</strong>&#x3D;&#x3D;将变量括起来</li>
+</ul>
+</li>
+<li>数字精度控制<ul>
+<li>我们可以使用**”m.n”**来控制数据的宽度和精度</li>
+<li>m: 控制宽度,设置宽度小于数字本身时不生效(小数点也算一点宽度)</li>
+<li>.n: 控制小数点精度,要求是数字,会对小数四舍五入</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>快速格式化<ul>
+<li>通过语法: f”内容{变量}”的格式来快速格式化</li>
+<li>特点: 不限数据类型,不做精度控制</li>
 </ul>
 </li>
 </ul>

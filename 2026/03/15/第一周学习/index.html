@@ -359,11 +359,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E5%91%BD%E4%BB%A4/">命令</a>&nbsp;
+                        <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
+                        | <a href="/tags/%E5%91%BD%E4%BB%A4/">命令</a>&nbsp;
                     </li>
                 
             </ul>
@@ -564,11 +564,11 @@ cp -r myfolder/ /home/user/backups/</li>
 <ul>
 <li>
 <p>设置当前登录用户的密码</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">passwd<br></code></pre></td></tr></table></figure></div>
 </li>
 <li>
 <p>设置（或修改）root 用户密码</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> passwd root</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> passwd root<br></code></pre></td></tr></table></figure></div>
 </li>
 <li>
 <p>为其他普通用户设置密码</p>
@@ -578,7 +578,7 @@ cp -r myfolder/ /home/user/backups/</li>
 </li>
 <li>
 <p>切换用户</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - 用户名</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">su - 用户名<br></code></pre></td></tr></table></figure></div>
 </li>
 </ul>
 <h1>怎么使用文本编辑器（写入，保存就行）</h1>
@@ -587,7 +587,7 @@ cp -r myfolder/ /home/user/backups/</li>
 <ul>
 <li>打开（或新建）文件</li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano 文件名</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano 文件名<br></code></pre></td></tr></table></figure></div>
 </li>
 <li>写入内容</li>
 <li>保存并退出
@@ -602,7 +602,7 @@ cp -r myfolder/ /home/user/backups/</li>
 <li>仅打包（不压缩）</li>
 <li>使用 tar 命令，生成 .tar 文件：</li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf 打包文件名.tar /要打包的路径</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -cvf 打包文件名.tar /要打包的路径<br></code></pre></td></tr></table></figure></div>
 <p>· c：创建打包文件<br>
 · v：显示处理的文件（可选）<br>
 · f：指定打包后的文件名</p>
@@ -614,19 +614,19 @@ cp -r myfolder/ /home/user/backups/</li>
 </ul>
 </li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -czvf 文件名.tar.gz /要打包的路径</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -czvf 文件名.tar.gz /要打包的路径<br></code></pre></td></tr></table></figure></div>
 <pre><code> 选项 -z 表示通过 gzip 压缩。
 </code></pre>
 <ul>
 <li>使用 bzip2 压缩（压缩率更高，稍慢）</li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cjvf 文件名.tar.bz2 /要打包的路径</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -cjvf 文件名.tar.bz2 /要打包的路径<br></code></pre></td></tr></table></figure></div>
 <pre><code> 选项 -j 表示通过 bzip2 压缩。
 </code></pre>
 <ul>
 <li>使用 xz 压缩（压缩率最高，较慢）</li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cJvf 文件名.tar.xz /要打包的路径</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -cJvf 文件名.tar.xz /要打包的路径<br></code></pre></td></tr></table></figure></div>
 <pre><code> 选项 -J 表示通过 xz 压缩。
 </code></pre>
 <ul>
@@ -636,19 +636,19 @@ cp -r myfolder/ /home/user/backups/</li>
 </ul>
 </li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf 打包文件.tar</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xvf 打包文件.tar<br></code></pre></td></tr></table></figure></div>
 <ul>
 <li>解压 .tar.gz 文件</li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf 文件.tar.gz</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xzvf 文件.tar.gz<br></code></pre></td></tr></table></figure></div>
 <ul>
 <li>解压 .tar.bz2 文件</li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xjvf 文件.tar.bz2</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xjvf 文件.tar.bz2<br></code></pre></td></tr></table></figure></div>
 <ul>
 <li>解压 .tar.xz 文件</li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xJvf 文件.tar.xz</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xJvf 文件.tar.xz<br></code></pre></td></tr></table></figure></div>
 <h1>怎么查看基本的日志文件</h1>
 <ul>
 <li>在 Linux 系统中，日志文件通常存储在 /var/log/ 目录下。查看日志可以帮助你了解系统运行状态、排查错误或监控应用。</li>
@@ -658,20 +658,20 @@ cp -r myfolder/ /home/user/backups/</li>
 </ul>
 </li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /var/log/syslog</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /var/log/syslog<br></code></pre></td></tr></table></figure></div>
 <pre><code>- 使用 less 分页浏览（可上下翻页、搜索）
 </code></pre>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less /var/log/syslog</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">less /var/log/syslog<br></code></pre></td></tr></table></figure></div>
 <pre><code>    按 空格 翻下一页，b 上一页，/关键词 搜索，q 退出。
 - 使用 tail 查看文件尾部（最新日志）
 </code></pre>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tail</span> /var/log/syslog          <span class="comment"># 默认显示最后10行</span></span><br><span class="line"><span class="built_in">tail</span> -n 50 /var/log/syslog    <span class="comment"># 显示最后50行</span></span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">tail</span> /var/log/syslog          <span class="hljs-comment"># 默认显示最后10行</span><br><span class="hljs-built_in">tail</span> -n 50 /var/log/syslog    <span class="hljs-comment"># 显示最后50行</span><br></code></pre></td></tr></table></figure></div>
 <pre><code>使用 head 查看文件头部（最早日志）
 </code></pre>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">head</span> -n 20 /var/log/syslog    <span class="comment"># 显示前20行</span></span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">head</span> -n 20 /var/log/syslog    <span class="hljs-comment"># 显示前20行</span><br></code></pre></td></tr></table></figure></div>
 <pre><code>- 使用 grep 过滤关键词
 </code></pre>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">&quot;error&quot;</span> /var/log/syslog          <span class="comment"># 查找包含 error 的行</span></span><br><span class="line">grep -i <span class="string">&quot;fail&quot;</span> /var/log/syslog        <span class="comment"># 忽略大小写</span></span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&quot;error&quot;</span> /var/log/syslog          <span class="hljs-comment"># 查找包含 error 的行</span><br>grep -i <span class="hljs-string">&quot;fail&quot;</span> /var/log/syslog        <span class="hljs-comment"># 忽略大小写</span><br></code></pre></td></tr></table></figure></div>
 <h1>常用的二进制文件目录怎么给文件赋权</h1>
 <ul>
 <li>在 Linux 中，给文件赋权通常指修改文件的访问权限（读、写、执行）或所有者。常用的二进制文件目录如 /bin、/usr/bin、/usr/local/bin 存放着系统命令和用户安装的程序，操作这些目录下的文件一般需要 root 权限。</li>
@@ -679,14 +679,14 @@ cp -r myfolder/ /home/user/backups/</li>
 <ul>
 <li>查看当前权限</li>
 </ul>
-   <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l 文件名</span><br></pre></td></tr></table></figure></div>
+   <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -l 文件名<br></code></pre></td></tr></table></figure></div>
 </li>
-<li>添加执行权限（常用）   <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x 文件名          <span class="comment"># 给所有用户添加执行权限</span></span><br><span class="line"><span class="built_in">chmod</span> u+x 文件名         <span class="comment"># 只给所有者添加执行权限</span></span><br></pre></td></tr></table></figure></div>
+<li>添加执行权限（常用）   <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> +x 文件名          <span class="hljs-comment"># 给所有用户添加执行权限</span><br><span class="hljs-built_in">chmod</span> u+x 文件名         <span class="hljs-comment"># 只给所有者添加执行权限</span><br></code></pre></td></tr></table></figure></div>
 </li>
 <li>使用数字模式（如 755）
 <ul>
 <li>r=4, w=2, x=1</li>
-<li>755 = 所有者(7=rwx)，组(5=r-x)，其他(5=r-x)<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 755 文件名</span><br></pre></td></tr></table></figure></div>
+<li>755 = 所有者(7=rwx)，组(5=r-x)，其他(5=r-x)<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> 755 文件名<br></code></pre></td></tr></table></figure></div>
 </li>
 </ul>
 </li>
@@ -696,12 +696,12 @@ cp -r myfolder/ /home/user/backups/</li>
 <li>运行当前目录下的文件</li>
 <li>如果可执行文件位于当前工作目录，需要在文件名前加上 ./：</li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./可执行文件名</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./可执行文件名<br></code></pre></td></tr></table></figure></div>
 <ul>
 <li>运行位于 PATH 中的命令</li>
 <li>如果文件所在的目录已经包含在环境变量 PATH 中（如 /usr/local/bin），可以直接输入文件名：</li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可执行文件名</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">可执行文件名<br></code></pre></td></tr></table></figure></div>
 <ul>
 <li>如何递归删除目录及其内容
 <ul>
@@ -710,12 +710,12 @@ rm 是删除命令，-r（或 -R）选项表示递归处理，可以删除目录
 </ul>
 </li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -r 目录名</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -r 目录名<br></code></pre></td></tr></table></figure></div>
 <ul>
 <li>强制删除（不提示）<br>
 添加 -f 选项可强制删除，不再询问确认：</li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf 目录名</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf 目录名<br></code></pre></td></tr></table></figure></div>
 <p>警告：rm -rf 非常危险，尤其是以 root 权限执行时，务必确认路径正确，避免误删重要数据。</p>
 <ul>
 <li>删除文件时不递归<br>
@@ -726,16 +726,16 @@ rm 是删除命令，-r（或 -R）选项表示递归处理，可以删除目录
 <li>使用 grep 直接递归搜索（最简单）<br>
 如果要在某个目录（如当前目录）下所有文件中搜索字符串 “flag”，可以直接用 grep 的递归选项：</li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -r <span class="string">&quot;flag&quot;</span> /路径</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep -r <span class="hljs-string">&quot;flag&quot;</span> /路径<br></code></pre></td></tr></table></figure></div>
 <ul>
 <li>-r 或 -R：递归搜索子目录</li>
 <li>加上 -l 可以只显示包含匹配内容的文件名（不显示具体匹配行）：</li>
 </ul>
-  <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -rl <span class="string">&quot;flag&quot;</span> /路径</span><br></pre></td></tr></table></figure></div>
+  <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep -rl <span class="hljs-string">&quot;flag&quot;</span> /路径<br></code></pre></td></tr></table></figure></div>
 <ul>
 <li>加上 -n 显示行号：</li>
 </ul>
-  <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -rn <span class="string">&quot;flag&quot;</span> /路径</span><br></pre></td></tr></table></figure></div>
+  <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep -rn <span class="hljs-string">&quot;flag&quot;</span> /路径<br></code></pre></td></tr></table></figure></div>
 <p>注意：如果某些文件无读取权限，可以加 sudo 或以 root 身份执行。</p>
 <ul>
 <li>使用 find 配合 grep（更灵活）<br>
@@ -745,14 +745,14 @@ find 可以按名称、类型、大小等条件筛选文件，再将结果交给
 </ul>
 </li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /路径 -<span class="built_in">type</span> f -<span class="built_in">exec</span> grep -l <span class="string">&quot;flag&quot;</span> &#123;&#125; \;</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find /路径 -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">exec</span> grep -l <span class="hljs-string">&quot;flag&quot;</span> &#123;&#125; \;<br></code></pre></td></tr></table></figure></div>
 <ul>
 <li>-type f：只查找普通文件（排除目录）</li>
 <li>-exec … ;：对每个找到的文件执行 grep -l “flag”</li>
 <li>· {} 是 find 找到的文件名的占位符</li>
 <li>通过管道和 xargs（效率更高）</li>
 </ul>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /路径 -<span class="built_in">type</span> f -print0 | xargs -0 grep -l <span class="string">&quot;flag&quot;</span></span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find /路径 -<span class="hljs-built_in">type</span> f -print0 | xargs -0 grep -l <span class="hljs-string">&quot;flag&quot;</span><br></code></pre></td></tr></table></figure></div>
 <ul>
 <li>-print0 和 xargs -0 配合处理文件名中的空格或特殊字符，更安全。</li>
 <li>可以进一步限制文件类型，如 -name “*.txt”。<br>
@@ -892,11 +892,11 @@ find 可以按名称、类型、大小等条件筛选文件，再将结果交给
 		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
 			
 			<li class="tag-item mx-0.5">
-				<a href="/tags/%E5%91%BD%E4%BB%A4/">#命令</a>&nbsp;
+				<a href="/tags/%E5%AD%A6%E4%B9%A0/">#学习</a>&nbsp;
 			</li>
 			
 			<li class="tag-item mx-0.5">
-				<a href="/tags/%E5%AD%A6%E4%B9%A0/">#学习</a>&nbsp;
+				<a href="/tags/%E5%91%BD%E4%BB%A4/">#命令</a>&nbsp;
 			</li>
 			
 		</ul>

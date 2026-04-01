@@ -78,7 +78,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://wtrainm.github.io/2026/03/28/markdown语法(26.3.28)/"/>
+    <link rel="canonical" href="https://wtrainm.github.io/2026/04/01/python爬虫(26.4.1)/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -87,17 +87,18 @@
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="markdown语法">
-<meta property="og:url" content="https://wtrainm.github.io/2026/03/28/markdown%E8%AF%AD%E6%B3%95(26.3.28)/index.html">
+<meta property="og:title" content="python爬虫,web请求,http">
+<meta property="og:url" content="https://wtrainm.github.io/2026/04/01/python%E7%88%AC%E8%99%AB(26.4.1)/index.html">
 <meta property="og:site_name" content="梧桐蔽日,雨夜长鸣">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://wtrainm.github.io/images/redefine-og.webp">
-<meta property="article:published_time" content="2026-03-28T07:34:00.000Z">
-<meta property="article:modified_time" content="2026-04-01T08:18:09.842Z">
+<meta property="article:published_time" content="2026-04-01T09:05:00.000Z">
+<meta property="article:modified_time" content="2026-04-01T13:58:53.168Z">
 <meta property="article:author" content="梧桐">
+<meta property="article:tag" content="python">
 <meta property="article:tag" content="学习">
-<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://wtrainm.github.io/images/redefine-og.webp">
     
@@ -111,7 +112,7 @@
     
     <title>
         
-            markdown语法 | 日常分享,祝大家天天开心!!!
+            python爬虫,web请求,http | 日常分享,祝大家天天开心!!!
         
     </title>
 
@@ -302,7 +303,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">markdown语法</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">python爬虫,web请求,http</h1>
 			</div>
 			
 		</div>
@@ -323,15 +324,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2026-03-28 15:34</span>
-        <span class="mobile">2026-03-28 15:34</span>
+        <span class="desktop">2026-04-01 17:05</span>
+        <span class="mobile">2026-04-01 17:05</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-04-01 16:18:09</span>
-            <span class="mobile">2026-04-01 16:18:09</span>
+            <span class="desktop">2026-04-01 21:58:53</span>
+            <span class="mobile">2026-04-01 21:58:53</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -345,7 +346,7 @@
                     
                         
                         <li>
-                            <a href="/categories/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">markdown基础语法</a>&nbsp;
+                            <a href="/categories/python%E7%88%AC%E8%99%AB/">python爬虫</a>&nbsp;
                         </li>
                     
                     
@@ -363,7 +364,11 @@
                     </li>
                 
                     <li>
-                        | <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>&nbsp;
+                        | <a href="/tags/python/">python</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>&nbsp;
                     </li>
                 
             </ul>
@@ -389,111 +394,113 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1>MarkDown基本语法</h1>
+			<h1>python爬虫</h1>
 <ul>
-<li>标题</li>
-</ul>
-<h1>这是一级标题</h1>
-<h2 id="这是二级标题">这是二级标题</h2>
-<p>…</p>
+<li>引入模块(打开网址)
 <ul>
-<li>
-<p>加粗</p>
+<li>from urllib.request import urlopen
 <ul>
-<li><strong>加粗</strong><br>
-(快捷键ctrl+b)</li>
+<li>url:网址  lib:库</li>
 </ul>
 </li>
-<li>
-<p>斜体</p>
-<ul>
-<li><em>斜体</em><br>
-(快捷键ctrl+i)</li>
 </ul>
 </li>
-<li>
-<p>斜体+加粗</p>
+<li>直接输入网址后是无法读取内容的
 <ul>
-<li><em><strong>斜体和加粗</strong></em></li>
+<li>需要在后面加上**.read()**,再打印出来</li>
 </ul>
 </li>
-<li>
-<p>删除</p>
+<li>此时获得的是字节,我们需要解码
 <ul>
-<li><s>删除线</s></li>
+<li>在**.read()<strong>后面加上</strong>.decode(“charset”)**解码
+<ul>
+<li>charset国内基本上为utf-8或者jbk,可以直接在字节内容里面搜索</li>
 </ul>
 </li>
-<li>
-<p>分割线</p>
-<hr>
-<hr>
-</li>
-<li>
-<p><s>高亮(需要打开拓展语法)</s></p>
-<ul>
-<li><s>==高亮==</s></li>
 </ul>
 </li>
-<li>
-<p>上标,下标((需要打开拓展语法)</p>
+<li>此时我们收到的是来自百度的页面源代码,而浏览器会执行很多内容从而展现我们所看到的画面
 <ul>
-<li>面积平方(面积^2^)</li>
-<li>水的化学式(H~2~0)</li>
+<li>页面源代码由html,css,js等组成</li>
 </ul>
 </li>
-<li>
-<p>表情符号<br>
-(win+<strong>==.==</strong>)</p>
-</li>
-<li>
-<p>表格</p>
+<li>我们在pycharm里面无法像浏览器一样将页面源代码展示成浏览器的画面,所以我们可以将页面源代码存在文件里
 <ul>
-<li>表格格式
-<table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>第二行中如果是|:—|:—|,则是左对齐<br>
-反之如果是|—:|—:|,则是右对齐<br>
-(快捷键ctrl+t)</li>
+<li>举例:with open(“<em>mybaidu.heml</em>”,‘<em>w</em>’,encoding=“<em>utf-8</em>”) as f :<br>
+f.write(<em>resp</em>.read().decode(“utf-8”))
+<ul>
+<li>斜体字是可替换内容</li>
 </ul>
 </li>
-<li>
-<p>代码块<br>
-快捷键(ctrl+shift+)</p>
+<li>with open语句</li>
+<li>详见<a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/338269258" >https://zhuanlan.zhihu.com/p/338269258<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+</ul>
 </li>
-<li>
-<p>引用<br>
-开头使用&gt;符号,然后紧接着空格符号</p>
-</li>
-<li>
-<p>代码块<br>
-(快捷键ctrl+shift+`)</p>
-</li>
-<li>
-<p>自动链接<br>
-&lt;里面填写网址&gt;<br>
-(Typora里面点击链接需要按住ctrl+点击)</p>
-</li>
-<li>
-<p>图片<br>
-! <a href=""></a><br>
-(!后面不需要空格,此处是为了能看到,[]里面放图片名字,()里面放图片路径)</p>
+<li><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.4.1.4.png"
+                      alt="展示图"
+                ></li>
+</ul>
+<h1>web请求全过程</h1>
 <ul>
-<li>注意事项:()里面放source的相对路径,且\均用/代替,在mc文本中无法看见图片内容,但是博客上可以看见</li>
+<li>两种模式
+<ul>
+<li><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.4.1.5.png"
+                      alt=""
+                ></li>
+<li><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.4.1.6.png"
+                      alt=""
+                ></li>
+</ul>
+</li>
+</ul>
+<h1>http协议</h1>
+<ul>
+<li>请求
+<ul>
+<li>1.请求行 -&gt;请求方式(get/post),请求地址,协议</li>
+<li>2.请求头 -&gt;放一些服务器要是有的附加条件</li>
+<li>3.(用于分割)</li>
+<li>4.请求体 -&gt;一般放一些请求参数</li>
+</ul>
+</li>
+<li>响应
+<ul>
+<li>1.状态码 -&gt;协议(与请求行相对应),状态码(你这次请求处理起来是否有问题.)</li>
+<li>2.响应头 -&gt;放一些客户端要使用的一些附加信息(kookie,验证信息,解密的key)</li>
+<li>3.(用于分割)</li>
+<li>4.响应体 -&gt;服务器返回的真真客户端要使用的东西
+<ul>
+<li>状态码:200(没问题)  302(重定向)  404(ulr错误)  500(服务器错误)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>请求头最常见的一些重要内容(爬虫需要)
+<ul>
+<li>User-Agent :请求载体的身份标识(用啥发送的请求)</li>
+<li>Referer :防盗链(这次请求是从哪个页面的?反爬会用到)</li>
+<li>cookie :本地字符串数据信息(用户登录信息,反爬的token)</li>
+</ul>
+</li>
+<li>响应头中一些重要的内容
+<ul>
+<li>cookie :本地字符串数据信息(用户登录信息,反爬的token)</li>
+<li>各种神奇的莫名其妙的字符串(一般都是token字样,防止各种攻击和反爬,需要经验)</li>
+</ul>
+</li>
+<li>请求方式
+<ul>
+<li>GET :显示提交</li>
+<li>POST :隐示提交</li>
 </ul>
 </li>
 </ul>
@@ -504,18 +511,18 @@
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> markdown语法</li>
+        <li><strong>标题:</strong> python爬虫,web请求,http</li>
         <li><strong>作者:</strong> 梧桐夜</li>
         <li><strong>创建于
-                :</strong> 2026-03-28 15:34:00</li>
+                :</strong> 2026-04-01 17:05:00</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2026-04-01 16:18:09
+                    :</strong> 2026-04-01 21:58:53
             </li>
         
         <li>
-            <strong>链接:</strong> https://redefine.ohevan.com/2026/03/28/markdown语法(26.3.28)/
+            <strong>链接:</strong> https://redefine.ohevan.com/2026/04/01/python爬虫(26.4.1)/
         </li>
         <li>
             <strong>
@@ -541,7 +548,11 @@
 			</li>
 			
 			<li class="tag-item mx-0.5">
-				<a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>&nbsp;
+				<a href="/tags/python/">#python</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>&nbsp;
 			</li>
 			
 		</ul>
@@ -552,23 +563,11 @@
 		
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
-			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2026/03/28/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F(26.3.28)/">
-					<span class="left arrow-icon flex justify-center items-center">
-						<i class="fa-solid fa-chevron-left"></i>
-					</span>
-					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">python正则表达式</span>
-						<span class="post-nav-item">上一篇</span>
-					</span>
-				</a>
-			</div>
-			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2026/03/18/python%E5%AD%A6%E4%B9%A0/">
+				<a class="next" rel="next" href="/2026/04/01/python%E5%87%BD%E6%95%B0,lam%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(26.4.1)/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">python学习</span>
+						<span class="post-nav-title-item truncate max-w-48">python函数,lambda,数据结构</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -651,8 +650,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
-		<div class="page-title">markdown语法</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">MarkDown基本语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">这是一级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%99%E6%98%AF%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="nav-text">这是二级标题</span></a></li></ol></li></ol>
+		<div class="page-title">python爬虫,web请求,http</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">python爬虫</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">web请求全过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">http协议</span></a></li></ol>
 
 	</div>
 </div>

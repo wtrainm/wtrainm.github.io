@@ -78,7 +78,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://wtrainm.github.io/2026/04/01/12/"/>
+    <link rel="canonical" href="https://wtrainm.github.io/2026/03/31/python集合,推导式,迭代器,生成器(26.3.31)/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -87,15 +87,17 @@
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="梧桐蔽日,雨夜长鸣">
-<meta property="og:url" content="https://wtrainm.github.io/2026/04/01/12/index.html">
+<meta property="og:title" content="python集合,推导式,迭代器,生成器">
+<meta property="og:url" content="https://wtrainm.github.io/2026/03/31/python%E9%9B%86%E5%90%88,%E6%8E%A8%E5%AF%BC%E5%BC%8F,%E8%BF%AD%E4%BB%A3%E5%99%A8,%E7%94%9F%E6%88%90%E5%99%A8(26.3.31)/index.html">
 <meta property="og:site_name" content="梧桐蔽日,雨夜长鸣">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://wtrainm.github.io/images/redefine-og.webp">
-<meta property="article:published_time" content="2026-04-01T06:16:44.642Z">
-<meta property="article:modified_time" content="2026-04-01T08:10:43.259Z">
+<meta property="article:published_time" content="2026-03-31T11:55:00.000Z">
+<meta property="article:modified_time" content="2026-03-31T14:14:29.902Z">
 <meta property="article:author" content="梧桐">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="学习">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://wtrainm.github.io/images/redefine-og.webp">
     
@@ -109,7 +111,7 @@
     
     <title>
         
-            日常分享,祝大家天天开心!!! - Redefine Your Hexo Journey.
+            python集合,推导式,迭代器,生成器 | 日常分享,祝大家天天开心!!!
         
     </title>
 
@@ -300,7 +302,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3"></h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">python集合,推导式,迭代器,生成器</h1>
 			</div>
 			
 		</div>
@@ -321,20 +323,51 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2026-04-01 14:16:44</span>
-        <span class="mobile">2026-04-01 14:16:44</span>
+        <span class="desktop">2026-03-31 19:55</span>
+        <span class="mobile">2026-03-31 19:55</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-04-01 16:10:43</span>
-            <span class="mobile">2026-04-01 16:10:43</span>
+            <span class="desktop">2026-03-31 22:14:29</span>
+            <span class="mobile">2026-03-31 22:14:29</span>
             <span class="hover-info">更新</span>
         </span>
     
 
     
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/python%E6%8C%87%E4%BB%A4/">python指令</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/python/">python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -356,120 +389,171 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1>python 函数</h1>
+			<h1>python 集合</h1>
+<h2 id="创建集合的方式">创建集合的方式</h2>
 <ul>
-<li>定义函数
+<li>变量 = ()</li>
+<li>set()<br>
+(创建一个空集合必须用set而不是{},因为{}是用来创建一个空字典.)</li>
+</ul>
+<h2 id="集合的基本操作-s代表集合">集合的基本操作(s代表集合)</h2>
 <ul>
-<li>规则:
+<li>添加元素
 <ul>
-<li>函数代码块以 def 关键词开头，后接函数标识符名称和圆括号 ()。</li>
-<li>任何传入参数和自变量必须放在圆括号中间，圆括号之间可以用于定义参数。</li>
-<li>函数的第一行语句可以选择性地使用文档字符串—用于存放函数说明。</li>
-<li>函数内容以冒号 : 起始，并且缩进。</li>
-<li>return [表达式] 结束函数，选择性地返回一个值给调用方，不带表达式的 return 相当于返回              None。</li>
-<li><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="%22C:%5CUsers%5Cwutong%5Cmy-blog%5Csource%5Cimages%5Cpy-tup-10-26-1.png%22"
-                      alt="如图"
-                ></li>
+<li>s.add( x )<br>
+(添加元素x到集合s中,如果元素已经存在,则不进行任何操作)</li>
+<li>s.update( x )<br>
+(可以添加元素,且参数可以是列表,元组,字典等<br>
+x可以有多个,可以用逗号分开)</li>
+</ul>
+</li>
+<li>移除元素
+<ul>
+<li>s.remove( x )<br>
+(如果元素存在,会发生错误)</li>
+<li>s.discard( x )<br>
+(如果元素不存在,也不会发生错误)</li>
+</ul>
+</li>
+<li>随机删除集合中的一个元素
+<ul>
+<li>s.pop()</li>
+</ul>
+</li>
+<li>计算集合元素个数
+<ul>
+<li>len(s)</li>
+</ul>
+</li>
+<li>清空集合
+<ul>
+<li>s.clear()</li>
+</ul>
+</li>
+<li>判断元素是否在集合中存在
+<ul>
+<li>x in s<br>
+(存在返回Ture,不存在返回Fales)</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>参数传递(通过id()函数来查看内存地址的变化)
+<h1>python推导式</h1>
+<h2 id="是什么">是什么</h2>
 <ul>
-<li>在 python 中，类型属于对象，对象有不同类型的区分，变量是没有类型的</li>
+<li>Python 推导式是一种独特的数据处理方式，可以从一个数据序列构建另一个新的数据序列的结构体。</li>
+<li>Python 推导式是一种强大且简洁的语法，适用于生成列表、字典、集合和生成器。</li>
 </ul>
-</li>
-<li>函数调用
+<h2 id="python推导式分类">python推导式分类</h2>
 <ul>
-<li>定义一个函数：给了函数一个名称，指定了函数里包含的参数，和代码块结构。<br>
-这个函数的基本结构完成以后，你可以通过另一个函数调用执行，也可以直接从 Python 命令提示符执行。</li>
-</ul>
-</li>
-</ul>
-<h1>python lambda(匿名函数)</h1>
+<li>python支持:
 <ul>
-<li>lambda 函数特点：
-<ul>
-<li>lambda 函数是匿名的，它们没有函数名称，只能通过赋值给变量或作为参数传递给其他函数           来使用。</li>
-<li>lambda 函数通常只包含一行代码，这使得它们适用于编写简单的函数。</li>
-</ul>
-</li>
-<li>lambda语法格式
-<ul>
-<li>lambda 语法格式：<br>
-lambda arguments: expression<br>
-lambda是 Python 的关键字，用于定义 lambda 函数。<br>
-arguments 是参数列表，可以包含零个或多个参数，但必须在冒号(:)前指定。<br>
-expression 是一个表达式，用于计算并返回函数的结果。</li>
+<li>列表(list)推导式</li>
+<li>字典(dict)推导式</li>
+<li>集合(set)推导式</li>
+<li>元组(tuple)推导式</li>
 </ul>
 </li>
 </ul>
-<h1>python数据结构</h1>
+<h2 id="python列表推导式格式">python列表推导式格式</h2>
 <ul>
-<li>列表相较字符串和元组的特点
+<li>
+<p>[表达式 for 变量 in 列表]<br>
+[out_exp_res for out_exp in input_list]</p>
+</li>
+<li>
+<p>[表达式 for 变量 in 列表 if 条件]<br>
+[out_exp_res for out_exp in input_list if condition]</p>
 <ul>
-<li>Python中列表是可变的，这是它区别于字符串和元组的最重要的特点，一句话概括即：列表可         以修改，而字符串和元组不能。</li>
-<li>列表的方法
+<li>out_exp_res：列表生成元素表达式，可以是有返回值的函数。<br>
+for out_exp in input_list：迭代 input_list 将<br>
+out_exp 传入到 out_exp_res 表达式中。<br>
+if condition：条件语句，可以过滤列表中不符合条件的值。</li>
+</ul>
+</li>
+<li>
+<p>过滤掉长度小于或等于3的字符串列表，并将剩下的转换成大写字母：</p>
 <ul>
-<li>见前面文章</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-data-structure.html" >https://www.runoob.com/python3/python3-data-structure.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li>实例</li>
+</ul>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>names = [‘Bob’,‘Tom’,‘alice’,‘Jerry’,‘Wendy’,‘Smith’]<br>
+new_names = [name.upper()for name in names if len(name)&gt;3]<br>
+print(new_names)<br>
+[‘ALICE’, ‘JERRY’, ‘WENDY’, ‘SMITH’]</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>(uppper()用于讲字符串中所以的小写字母转换成大写字母)</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<h1>将列表当作栈使用</h1>
+<h2 id="字典推导式">字典推导式</h2>
 <ul>
-<li>**通过append()<strong>和</strong>pop()**实现栈功能
+<li>字典推断的基本格式
 <ul>
-<li>栈操作
-<ul>
-<li>压入（Push）: 将一个元素添加到栈的顶端。</li>
-<li>弹出（Pop）: 移除并返回栈顶元素。</li>
-<li>查看栈顶元素（Peek/Top）: 返回栈顶元素而不移除它。</li>
-<li>检查是否为空（IsEmpty）: 检查栈是否为空。</li>
-<li>获取栈的大小（Size）: 获取栈中元素的数量。</li>
+<li>{ key_expr: value_expr for value in collection }</li>
+<li>{ key_expr: value_expr for value in collection if condition }</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>创建一个空栈
+<h2 id="元组推导式">元组推导式</h2>
 <ul>
-<li>stack = []</li>
+<li>元组推到
+<ul>
+<li>元组推导式可以利用 range 区间、元组、列表、字典和集合等数据类型，快速生成一个满足指定需求的元组。</li>
 </ul>
 </li>
-<li>压入(push)操作
+<li>元组推导式基本格式：<br>
+(expression for item in Sequence )<br>
+(expression for item in Sequence if conditional )<br>
+元组推导式和列表推导式的用法也完全相同，只是元组推导式是用 () 圆括号将各部分括起来，而列表推导式用的是中括号 []，另外元组推导式返回的结果是一个生成器对象。</li>
+</ul>
+<h1>python迭代器和生成器</h1>
 <ul>
-<li>使用append()放大将元素添加到栈的顶端</li>
-<li>stack.append()</li>
+<li>迭代器是什么
+<ul>
+<li>访问集合元素的一种方式</li>
+<li>可以记住遍历的位置的对象</li>
+<li>迭代器只会往前不会退后</li>
+<li>基本方法:iter() , next()</li>
+<li>字符串,列表或元组对象都可用于创建迭代器</li>
 </ul>
 </li>
-<li>弹出(pop)操作
+<li>迭代器格式
 <ul>
-<li>使用pop()方法移除并返回栈顶元素</li>
+<li>list=[1,2,3,4]<br>
+it = iter(list)    # 创建迭代器对象<br>
+print (next(it))   # 输出迭代器的下一个元素<br>
+1<br>
+print (next(it))<br>
+2</li>
 </ul>
 </li>
-<li>检查是否为空</li>
-<li>获取栈的大小
+<li>迭代器对象可以使用常规for语句进行遍历
 <ul>
-<li>通过len()函数获取栈中元素的数量</li>
+<li>list=[1,2,3,4]<br>
+it = iter(list)    # 创建迭代器对象<br>
+for x in it:<br>
+print (x, end=&quot; &quot;)<br>
+1 2 3 4</li>
 </ul>
 </li>
-<li><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/26.4.1.1.png"
-                      alt="图片简介"
-                ></li>
-<li><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/26.4.1.2.png"
-                      alt="图片简介"
-                ></li>
+</ul>
+<h2 id="生成器">生成器</h2>
+<ul>
+<li>生成器是什么
+<ul>
+<li>使用了yield的函数被称为生成器</li>
+</ul>
+</li>
+<li>yield函数是什么
+<ul>
+<li>yield 是一个关键字，用于定义生成器函数，生成器函数是一种特殊的函数，可以在迭代过程中逐步产生值，而不是一次性返回所有结果。跟普通函数不同的是，生成器是一个返回迭代器的函数，只能用于迭代操作，更简单点理解生成器就是一个迭代器。当在生成器函数中使用 yield 语句时，函数的执行将会暂停，并将 yield 后面的表达式作为当前迭代的值返回。然后，每次调用生成器的 next() 方法或使用 for 循环进行迭代时，函数会从上次暂停的地方继续执行，直到再次遇到 yield 语句。这样，生成器函数可以逐步产生值，而不需要一次性计算并返回所有结果。调用一个生成器函数，返回的是一个迭代器对象。</li>
+</ul>
+</li>
 </ul>
 
 		</div>
@@ -478,18 +562,18 @@ expression 是一个表达式，用于计算并返回函数的结果。</li>
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> </li>
+        <li><strong>标题:</strong> python集合,推导式,迭代器,生成器</li>
         <li><strong>作者:</strong> 梧桐夜</li>
         <li><strong>创建于
-                :</strong> 2026-04-01 14:16:44</li>
+                :</strong> 2026-03-31 19:55:00</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2026-04-01 16:10:43
+                    :</strong> 2026-03-31 22:14:29
             </li>
         
         <li>
-            <strong>链接:</strong> https://redefine.ohevan.com/2026/04/01/12/
+            <strong>链接:</strong> https://redefine.ohevan.com/2026/03/31/python集合,推导式,迭代器,生成器(26.3.31)/
         </li>
         <li>
             <strong>
@@ -508,17 +592,41 @@ expression 是一个表达式，用于计算并返回函数的结果。</li>
 		
 
 		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%AD%A6%E4%B9%A0/">#学习</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/python/">#python</a>&nbsp;
+			</li>
+			
+		</ul>
+		
 
 		
 
 		
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2026/04/01/python%E5%87%BD%E6%95%B0,lam%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(26.4.1)/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48"></span>
+						<span class="post-nav-item">上一篇</span>
+					</span>
+				</a>
+			</div>
+			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2026/03/31/python%E9%9B%86%E5%90%88,%E6%8E%A8%E5%AF%BC%E5%BC%8F,%E8%BF%AD%E4%BB%A3%E5%99%A8,%E7%94%9F%E6%88%90%E5%99%A8(3.31)/">
+				<a class="next" rel="next" href="/2026/03/28/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F(26.3.28)/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">python集合,推导式,迭代器,生成器</span>
+						<span class="post-nav-title-item truncate max-w-48">python正则表达式</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -601,8 +709,8 @@ expression 是一个表达式，用于计算并返回函数的结果。</li>
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
-		<div class="page-title"></div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">python 函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">python lambda(匿名函数)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">python数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">将列表当作栈使用</span></a></li></ol>
+		<div class="page-title">python集合,推导式,迭代器,生成器</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">python 集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%9B%86%E5%90%88%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-text">创建集合的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-s%E4%BB%A3%E8%A1%A8%E9%9B%86%E5%90%88"><span class="nav-text">集合的基本操作(s代表集合)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">python推导式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python%E6%8E%A8%E5%AF%BC%E5%BC%8F%E5%88%86%E7%B1%BB"><span class="nav-text">python推导式分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F%E6%A0%BC%E5%BC%8F"><span class="nav-text">python列表推导式格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%85%B8%E6%8E%A8%E5%AF%BC%E5%BC%8F"><span class="nav-text">字典推导式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%BB%84%E6%8E%A8%E5%AF%BC%E5%BC%8F"><span class="nav-text">元组推导式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">python迭代器和生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8"><span class="nav-text">生成器</span></a></li></ol></li></ol>
 
 	</div>
 </div>

@@ -78,7 +78,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://wtrainm.github.io/2026/04/04/python爬虫爬b站评论26.4.3)/"/>
+    <link rel="canonical" href="https://wtrainm.github.io/2026/04/16/mysql1/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -87,17 +87,17 @@
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python爬虫爬n站评论">
-<meta property="og:url" content="https://wtrainm.github.io/2026/04/04/python%E7%88%AC%E8%99%AB%E7%88%ACb%E7%AB%99%E8%AF%84%E8%AE%BA26.4.3)/index.html">
+<meta property="og:title" content="MYSQL">
+<meta property="og:url" content="https://wtrainm.github.io/2026/04/16/mysql1/index.html">
 <meta property="og:site_name" content="梧桐蔽日,雨夜长鸣">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://wtrainm.github.io/images/redefine-og.webp">
-<meta property="article:published_time" content="2026-04-04T03:18:00.000Z">
-<meta property="article:modified_time" content="2026-04-04T12:51:58.666Z">
+<meta property="article:published_time" content="2026-04-16T11:24:00.000Z">
+<meta property="article:modified_time" content="2026-04-22T12:20:05.966Z">
 <meta property="article:author" content="梧桐">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="学习">
+<meta property="article:tag" content="php">
+<meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://wtrainm.github.io/images/redefine-og.webp">
     
@@ -111,7 +111,7 @@
     
     <title>
         
-            python爬虫爬n站评论 | 日常分享,祝大家天天开心!!!
+            MYSQL | 日常分享,祝大家天天开心!!!
         
     </title>
 
@@ -302,7 +302,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">python爬虫爬n站评论</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">MYSQL</h1>
 			</div>
 			
 		</div>
@@ -323,15 +323,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2026-04-04 11:18</span>
-        <span class="mobile">2026-04-04 11:18</span>
+        <span class="desktop">2026-04-16 19:24</span>
+        <span class="mobile">2026-04-16 19:24</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-04-04 20:51:58</span>
-            <span class="mobile">2026-04-04 20:51:58</span>
+            <span class="desktop">2026-04-22 20:20:05</span>
+            <span class="mobile">2026-04-22 20:20:05</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -345,7 +345,7 @@
                     
                         
                         <li>
-                            <a href="/categories/python-%E7%88%AC%E8%99%AB/">python,爬虫</a>&nbsp;
+                            <a href="/categories/php/">php</a>&nbsp;
                         </li>
                     
                     
@@ -359,11 +359,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/python/">python</a>&nbsp;
+                        | <a href="/tags/php/">php</a>&nbsp;
                     </li>
                 
             </ul>
@@ -389,119 +389,314 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h1>爬虫实现的基本流程</h1>
-<h2 id="学习视频-https-www-bilibili-com-video-BV1K9Hse8EwM-vd-source-ebb1e23dfa4a32efad950b25a49b8510">学习视频: <a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1K9Hse8EwM?vd_source=ebb1e23dfa4a32efad950b25a49b8510" >https://www.bilibili.com/video/BV1K9Hse8EwM?vd_source=ebb1e23dfa4a32efad950b25a49b8510<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
-<h2 id="数据来源分析">数据来源分析</h2>
+			<h1>php mysql简介</h1>
+<h2 id="什么是数据库">什么是数据库</h2>
 <ul>
-<li>明确需求
+<li>数据库是按照数据结构来组织,存储和管理数据的仓库</li>
+<li>每个数据库都有一个或者多个不同的api用于创建,访问,</li>
+<li>我们也可以将数据存储在文件中，但是在文件中读写数据速度相对较慢。所以，现在我们使用关系型数据库管理系统（RDBMS）来存储和管理大数据量。所谓的关系型数据库，是建立在关系模型基础上的数据库，借助于集合代数等数学概念和方法来处理数据库中的数据。</li>
+<li>RDBMS的特点
 <ul>
-<li>明确采集的网站以及数据内容
+<li>数据以表格的形式出现</li>
+<li>每行为各种记录名称</li>
+<li>每列为记录名称所对应的数据域</li>
+<li>许多的行和列组成一张表单</li>
+<li>若干的表单组成database</li>
+</ul>
+</li>
+</ul>
+<h2 id="RDBMS-术语">RDBMS 术语</h2>
 <ul>
-<li>网址:<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1qvwVz9EMW/?spm_id_from=333.1007.tianma.1-1-1.click&amp;vd_source=a7ccd7412ece096faadebe127d1edfd4" >https://www.bilibili.com/video/BV1qvwVz9EMW/?spm_id_from=333.1007.tianma.1-1-1.click&amp;vd_source=a7ccd7412ece096faadebe127d1edfd4<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
-<li>数据:评论相关内容</li>
+<li>数据库: 数据库是一些关联表的集合</li>
+<li>数据表: 表是数据的矩阵。在一个数据库中的表看起来像一个简单的电子表格。</li>
+<li>列: 一列(数据元素) 包含了相同类型的数据, 例如邮政编码的数据。</li>
+<li>行：一行（元组，或记录）是一组相关的数据，例如一条用户订阅的数据。</li>
+<li>冗余：存储两倍数据，冗余降低了性能，但提高了数据的安全性。</li>
+<li>主键：主键是唯一的。一个数据表中只能包含一个主键。你可以使用主键来查询数据</li>
+<li>外键：外键用于关联两个表。</li>
+<li>复合键（组合键）将多个列作为一个索引键，一般用于复合索引。</li>
+<li>索引：使用索引可快速访问数据库表中的特定信息。索引是对数据库表中一列或多列的值进行排序的一种结构。类似于书籍的目录</li>
+<li>参照完整性: 参照的完整性要求关系中不允许引用不存在的实体。与实体完整性是关系模型必须满足的完整性约束条件，目的是保证数据的一致性</li>
+<li>表头(header): 每一列的名称;</li>
+<li>列(col): 具有相同数据类型的数据的集合;</li>
+<li>行(row): 每一行用来描述某条记录的具体信息;</li>
+<li>值(value): 行的具体信息, 每个值必须与该列的数据类型相同;</li>
+<li>键(key): 键的值在当前列中具有唯一性。</li>
+<li><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.4.16.1.png"
+                      alt=""
+                ></li>
+</ul>
+<h2 id="mysql-管理">mysql 管理</h2>
+<h3 id="在windows下">在windows下</h3>
+<ul>
+<li>启动 MySQL 服务器:
+<ul>
+<li>1、通过 “服务” 管理工具： 打开&quot;运行&quot;对话框（Win + R），输入 services.msc，找到&quot;MySQL&quot;服务，右击选择&quot;启动&quot;。(<strong>不建议使用</strong>)</li>
+<li>2、通过命令提示符： 打开命令提示符（以管理员身份），输入以下命令：<br>
+<code>net start mysql</code></li>
+</ul>
+</li>
+<li>关闭MySQL服务器:
+<ul>
+<li>1、通过 “服务” 管理工具：同样打开&quot;运行&quot;对话框，输入 services.msc，找到 “MySQL” 服务，右击选择&quot;停止&quot;。</li>
+<li>2、通过命令提示符： 打开命令提示符（以管理员身份），输入以下命令：<br>
+<code>net stop mysql</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="在Linux下">在Linux下</h3>
+<ul>
+<li>启动 MySQL 服务：
+<ul>
+<li>使用 systemd命令（适用于大多数现代 Linux 发行版，如 Ubuntu、CentOS 等）：<br>
+<code>sudo systemctl start mysql</code></li>
+<li>使用 service 命令（在一些较旧的发行版中）：<br>
+<code>sudo service mysql start</code></li>
+</ul>
+</li>
+<li>2、关闭 MySQL 服务：
+<ul>
+<li>使用 systemd：<br>
+<code>sudo systemctl stop mysql</code></li>
+<li>使用 service 命令：<br>
+<code>sudo service mysql stop</code></li>
+</ul>
+</li>
+<li>3、重启 MySQL 服务：
+<ul>
+<li>使用 systemd：<br>
+<code>sudo systemctl restart mysql</code></li>
+</ul>
+</li>
+<li>使用 service 命令：<br>
+<code>sudo service mysql restart</code></li>
+<li>4、检查 MySQL 服务状态：
+<ul>
+<li>使用 systemd命令：<br>
+<code>sudo systemctl status mysql</code></li>
+</ul>
+</li>
+<li>使用 service 命令：<br>
+<code>sudo service mysql status</code></li>
+</ul>
+<h3 id="用户设置">用户设置</h3>
+<ul>
+<li>
+<p>创建用户(推荐使用大写,是SQL编程的通用风格,提高代码可读性,方便区分关键字和用户自定义内容)</p>
+<ul>
+<li><code> CREATE USER 'username'@'host' IDENTIFIED BY 'password';</code>
+<ul>
+<li>username：用户名。</li>
+<li>host：指定用户可以从哪些主机连接。例如，localhost 仅允许本地连接，% 允许从任何主机连接。</li>
+<li>password：用户的密码。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>抓包分析
+<li>
+<p>授权权限</p>
 <ul>
-<li>通过浏览器开发者工具分析对应的数据位置
+<li>当你创建用户后,你需要授予他们访问权限,使用<code>GRANT</code>命令来授予权限</li>
+<li><code>GRANT privileges ON database_name.* TO 'username'@'host';</code>
 <ul>
-<li>打开开发者工具
-<ul>
-<li>按f12</li>
+<li>privileges：所需的权限，如 ALL PRIVILEGES、SELECT、INSERT、UPDATE、DELETE 等。</li>
+<li>database_name.<em>：表示对某个数据库或表授予权限。database_name.</em> 表示对整个数据库的所有表授予权限，database_name.table_name 表示对指定的表授予权限。</li>
+<li>TO ‘username’@‘host’：指定授予权限的用户和主机。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>刷新网页/点击下一页/下滑网页…
+<li>
+<p>刷新权限</p>
 <ul>
-<li>让网页相关数据内容加载出来</li>
-<li>通过关键字找到对应的数据位置</li>
-<li>关键字搜索:需要什么数据,就搜什么数据
+<li>授予或撤销权限后，需要刷新权限使更改生效：</li>
+<li><code>FLUSH PRIVILEGES;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="mysql连接">mysql连接</h2>
+<h3 id="mysql连接-2">mysql连接</h3>
 <ul>
-<li>找到评论的数据库
+<li>安装完mysql后,你可以通过一下几种方式连接到mysql服务端
 <ul>
-<li>数据包地址:<a class="link"   target="_blank" rel="noopener" href="https://api.bilibili.com/x/v2/reply/wbi/main?oid=116236679774476&amp;type=1&amp;mode=3&amp;pagination_str=%7B%22offset%22:%22%22%7D&amp;plat=1&amp;seek_rpid=&amp;web_location=1315875&amp;w_rid=3858ebcb2bf691020072d380ca0d21cc&amp;wts=1775283763" >https://api.bilibili.com/x/v2/reply/wbi/main?oid=116236679774476&amp;type=1&amp;mode=3&amp;pagination_str={“offset”:“”}&amp;plat=1&amp;seek_rpid=&amp;web_location=1315875&amp;w_rid=3858ebcb2bf691020072d380ca0d21cc&amp;wts=1775283763<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>
+<li>使用命令行客户端连接</li>
+<li>使用图形化工具连接</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用mysql二进制方式连接">使用mysql二进制方式连接</h3>
 <ul>
-<li>遇到加密类型是无法通过搜索关键字找到数据包地址的,可以点击相关内容,在减少加载网页相关数据,在少量的文件中找</li>
+<li>
+<p>你可以使用mysql二进制的方式进入到mysql命令提示符下来连接mysql数据库</p>
+</li>
+<li>
+<p>语法:<br>
+<code>mysql -u your_username -p</code></p>
+</li>
+<li>
+<p>参数说明</p>
+<ul>
+<li>-u 参数用于指定用户名。</li>
+<li>-p 参数表示需要输入密码。</li>
+</ul>
+</li>
+<li>
+<p>制定主机和端口连接(适用于远程连接)</p>
+</li>
+<li>
+<p><code>mysql -h 主机名或ip地址 -p 端口号 -u 用户名 -p</code></p>
+</li>
+</ul>
+<h3 id="mysql-创建数据库">mysql 创建数据库</h3>
+<ul>
+<li>如何创建
+<ul>
+<li>我们在登录mysql服务之后,使用<code>create</code>命令创建数据库</li>
+<li>语法:<br>
+<code>CREATE DATABASE 数据库名;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="使用-mysqladmin-创建数据库">使用 mysqladmin 创建数据库</h3>
+<ul>
+<li>mysqladmin 是mysql提供的一个用于执行管理任务的命令行工具</li>
+<li>通过mysqladmin,你可以执行各种数据库管理,包括创建数据库
+<ul>
+<li>基本语法:<br>
+<code>mysqladmin -u your_username -p create your_database</code></li>
+<li>参数说明
+<ul>
+<li>-u 参数用于指定 MySQL 用户名。</li>
+<li>-p 参数表示需要输入密码。</li>
+<li>create 是执行的操作，表示创建数据库。</li>
+<li>your_database 是要创建的数据库的名称</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="代码实现步骤">代码实现步骤</h2>
+<h3 id="使用-php脚本-创建数据库">使用 php脚本 创建数据库</h3>
 <ul>
-<li>发送请求
-<ul>
-<li>使用requests模块(需要提前下载,在pycharm的终端里面输入**“pip install reqeusts”**)
-<ul>
-<li>导入数据请求模块<strong>import requests</strong></li>
-<li>请求参数
-<ul>
-<li>分清楚是get请求还是post请求</li>
-<li>get请求: 直接在连接就有
-<ul>
-<li>可以额外构建查询参数
-<ul>
-<li>将url中?后面的内容分离出来,用另一个空字典接收.要用键值对的形式(有点麻烦,我先不了解了,但是学习视频里面有在21:42的位置)</li>
+<li>php 使用 mysqli_query 函数来创建或者删除mysql数据库</li>
+<li>该函数有两个参数,在执行成功时返回TREU 否则返回FALSE</li>
+<li>语法:<br>
+<code>mysqli_query(connection,query,resultmode);</code><br>
+|参数|描述|<br>
+|—|—|<br>
+|connection|必需。规定要使用的 MySQL 连接|<br>
+|query|必需，规定查询字符串|<br>
+|resultmode| 可选。MYSQLI_USE_RESULT（如果需要检索大量数据，请使用这个)     MYSQLI_STORE_RESULT（默认)|</li>
 </ul>
-</li>
-<li>不额外查询参数(默认操作,直接将完整url输入进去)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>模拟浏览器对url地址发送请求
+<h2 id="删除数据库">删除数据库</h2>
+<h3 id="drop-命令删除数据库">drop 命令删除数据库</h3>
 <ul>
-<li>使用开发者工具请求标头内的参数内容</li>
-<li>常用模拟伪装参数: cookie(用户信息:常用于检测是否有登录账号)/referer/ua(用户代理,表示浏览器基本用户信息)
+<li>drop 命令格式</li>
+<li><code>DROP DATABASE &lt;database_name&gt;;</code>      直接删除数据库，不检查是否存在(如果不存在会报错)</li>
+<li><code>DROP DATABASE [IF EXISTS] &lt;database_name&gt;;</code>
 <ul>
-<li>代码格式: 创建空字典接收参数内容,字典是{}</li>
+<li>参数说明</li>
+<li>IF EXISTS 是一个可选的子句，表示如果数据库存在才执行删除操作，避免因为数据库不存在而引发错误。</li>
+<li>database_name 是你要删除的数据库的名称。</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>获取数据
+<h3 id="使用-mysqladmin-删除数据库">使用 mysqladmin 删除数据库</h3>
 <ul>
-<li>获取服务器返回响应数据
+<li>你也可以使用 MySQL mysqladmin 命令在终端来执行删除命令。</li>
+<li>以下是使用 mysqladmin 删除数据库的命令：
 <ul>
-<li>利用开发者工具看响应
+<li><code>mysqladmin -u your_username -p drop your_database</code></li>
+<li>your_username 是 MySQL 用户名，your_database 是要删除的数据库的名称。</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用php-脚本删除数据库">使用php 脚本删除数据库</h3>
 <ul>
-<li>用花括号包裹起来的话,直接用json</li>
+<li>php 使用 mysqli_query 函数来创建或者删除mysql数据库</li>
+<li>该函数有两个参数,在执行成功时返回TREU 否则返回FALSE</li>
+<li>语法:<br>
+<code>mysqli_query(connection,query,resultmode);</code><br>
+|参数|描述|<br>
+|—|—|<br>
+|connection|必需。规定要使用的 MySQL 连接|<br>
+|query|必需，规定查询字符串|<br>
+|resultmode| 可选。MYSQLI_USE_RESULT（如果需要检索大量数据，请使用这个)     MYSQLI_STORE_RESULT（默认)|</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>解析数据
+<h2 id="mysql-选择数据库">mysql 选择数据库</h2>
+<h3 id="从命令提示窗口选择mysql数据库">从命令提示窗口选择mysql数据库</h3>
 <ul>
-<li>提取我们需要的数据内容</li>
-<li>字典取值,提取评论信息所在replies列表
+<li>
+<p>在<code>mysql&gt;</code>提示窗口可以很简单的选择特定的数据库</p>
+</li>
+<li>
+<p>在mysql 中,要选择要使用的数据库,可以使用<code>use</code>语句,以下是基本的语法:</p>
 <ul>
-<li>键值对取值,根据冒号左边的内容(键),提取冒号右边的内容(值)</li>
-<li>要一层一层取,嵌套的形式</li>
-</ul>
-</li>
-<li>for循环遍历,提取列表里面的元素</li>
-</ul>
-</li>
-<li>保存数据
+<li><code>USE database_name;</code></li>
+<li>参数说明:
 <ul>
-<li>把提取出来的数据保存格式(详见视频谢谢)</li>
+<li>database_name 是你要选择的数据库的名称。</li>
 </ul>
 </li>
 </ul>
 </li>
+<li>
+<p>使用php 脚本选择 mysql 数据库</p>
+</li>
+<li>
+<p>语法:<br>
+<code>mysqli_select_db(connection,dbname);</code><br>
+|参数|描述|<br>
+|—|—|<br>
+|connection|必需.规定要使用的mysql连接|<br>
+|dbname|必需.规定要使用的默认数据库|</p>
+</li>
+</ul>
+<h2 id="mysql-数据类型">mysql 数据类型</h2>
+<h3 id="mysql-数据类型说明">mysql 数据类型说明</h3>
+<ul>
+<li>MySQL 中定义数据字段的类型对你数据库的优化是非常重要的。</li>
+<li>MySQL 支持多种类型，大致可以分为三类：数值、日期/时间和字符串(字符)类型。</li>
+</ul>
+<h3 id="数值类型">数值类型</h3>
+<ul>
+<li>mysql 支持所有标准sql 数值数据类型</li>
+<li>MySQL 支持所有标准 SQL 数值数据类型。</li>
+<li>关键字INT是INTEGER的同义词，关键字DEC是DECIMAL的同义词。
+<ul>
+<li><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.4.22.1.png"
+                      alt=""
+                ></li>
+</ul>
+</li>
+</ul>
+<h3 id="日期和时间类型">日期和时间类型</h3>
+<ul>
+<li>表示时间值的日期和时间类型为DATETIME、DATE、TIMESTAMP、TIME和YEAR。</li>
+<li>每个时间类型有一个有效值范围和一个&quot;零&quot;值，当指定不合法的MySQL不能表示的值时使用&quot;零&quot;值。</li>
+<li><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.4.22.2.png"
+                      alt=""
+                ></li>
+</ul>
+<h3 id="字符串类型">字符串类型</h3>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.4.22.3.png"
+                      alt=""
+                ></p>
+<h3 id="枚举与集合类型">枚举与集合类型</h3>
+<ul>
+<li>ENUM; 枚举类型,用于存储单一值,可以选择一个预定义的集合</li>
+<li>SET: 集合类型,用于存储多个值,可以选择多个预定义的集合</li>
 </ul>
 
 		</div>
@@ -510,18 +705,18 @@
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> python爬虫爬n站评论</li>
+        <li><strong>标题:</strong> MYSQL</li>
         <li><strong>作者:</strong> 梧桐夜</li>
         <li><strong>创建于
-                :</strong> 2026-04-04 11:18:00</li>
+                :</strong> 2026-04-16 19:24:00</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2026-04-04 20:51:58
+                    :</strong> 2026-04-22 20:20:05
             </li>
         
         <li>
-            <strong>链接:</strong> https://redefine.ohevan.com/2026/04/04/python爬虫爬b站评论26.4.3)/
+            <strong>链接:</strong> https://redefine.ohevan.com/2026/04/16/mysql1/
         </li>
         <li>
             <strong>
@@ -543,11 +738,11 @@
 		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
 			
 			<li class="tag-item mx-0.5">
-				<a href="/tags/%E5%AD%A6%E4%B9%A0/">#学习</a>&nbsp;
+				<a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>&nbsp;
 			</li>
 			
 			<li class="tag-item mx-0.5">
-				<a href="/tags/python/">#python</a>&nbsp;
+				<a href="/tags/php/">#php</a>&nbsp;
 			</li>
 			
 		</ul>
@@ -559,12 +754,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2026/04/04/HTML/">
+				<a class="prev" rel="prev" href="/2026/04/22/mysql2/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">HTML,php前置知识</span>
+						<span class="post-nav-title-item truncate max-w-48">MYSQL2</span>
 						<span class="post-nav-item">上一篇</span>
 					</span>
 				</a>
@@ -572,9 +767,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2026/04/01/python%E7%88%AC%E8%99%AB%E7%AC%AC%E4%B8%80%E5%A4%A9(26.4.1)/">
+				<a class="next" rel="next" href="/2026/04/04/HTML/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">python爬虫,web请求,http</span>
+						<span class="post-nav-title-item truncate max-w-48">HTML,php前置知识</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -657,8 +852,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
-		<div class="page-title">python爬虫爬n站评论</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">爬虫实现的基本流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91-https-www-bilibili-com-video-BV1K9Hse8EwM-vd-source-ebb1e23dfa4a32efad950b25a49b8510"><span class="nav-text">学习视频: https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1K9Hse8EwM?vd_source&#x3D;ebb1e23dfa4a32efad950b25a49b8510</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90%E5%88%86%E6%9E%90"><span class="nav-text">数据来源分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="nav-text">代码实现步骤</span></a></li></ol></li></ol>
+		<div class="page-title">MYSQL</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">php mysql简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">什么是数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDBMS-%E6%9C%AF%E8%AF%AD"><span class="nav-text">RDBMS 术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-%E7%AE%A1%E7%90%86"><span class="nav-text">mysql 管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8windows%E4%B8%8B"><span class="nav-text">在windows下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8Linux%E4%B8%8B"><span class="nav-text">在Linux下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E8%AE%BE%E7%BD%AE"><span class="nav-text">用户设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql%E8%BF%9E%E6%8E%A5"><span class="nav-text">mysql连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql%E8%BF%9E%E6%8E%A5-2"><span class="nav-text">mysql连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8mysql%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%B9%E5%BC%8F%E8%BF%9E%E6%8E%A5"><span class="nav-text">使用mysql二进制方式连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">mysql 创建数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-mysqladmin-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">使用 mysqladmin 创建数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-php%E8%84%9A%E6%9C%AC-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">使用 php脚本 创建数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">删除数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#drop-%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">drop 命令删除数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-mysqladmin-%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">使用 mysqladmin 删除数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8php-%E8%84%9A%E6%9C%AC%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">使用php 脚本删除数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-%E9%80%89%E6%8B%A9%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">mysql 选择数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AA%97%E5%8F%A3%E9%80%89%E6%8B%A9mysql%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">从命令提示窗口选择mysql数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">mysql 数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%B4%E6%98%8E"><span class="nav-text">mysql 数据类型说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="nav-text">数值类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E7%B1%BB%E5%9E%8B"><span class="nav-text">日期和时间类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B"><span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E4%B8%8E%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="nav-text">枚举与集合类型</span></a></li></ol></li></ol></li></ol>
 
 	</div>
 </div>

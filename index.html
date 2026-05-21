@@ -347,7 +347,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">18</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">16</div>
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -355,7 +355,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">21</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -387,7 +387,7 @@
 </div>
                 <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">18</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">16</div>
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -395,7 +395,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">21</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -604,94 +604,6 @@ lim...
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2026/05/11/sqlilabs%E5%B0%8F%E7%BB%93/">
-                            sqlilab小结
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            sql注入
-union联合注入
-报错注入
-
-页面无回显就尝试报错注入
-先搭建简单的报错语句,再看是否可以使用报错注入,还是需要用盲注
-
-updataxml和extractvalue选其一,如果被禁用再考虑floor报错
-
-
-
-布尔盲注
-
-发现无回显位时,用1' or 1=1 --+来判断闭合方式
-
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon May 11 2026 20:13:00 GMT+0800">
-                
-                    2026-05-11
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/mysql/">mysql</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E6%80%BB%E7%BB%93/">总结</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/sqlilabs/">sqlilabs</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2026/05/11/sqlilabs%E5%B0%8F%E7%BB%93/">阅读全文<span class="seo-reader-text">sqlilab小结</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
                         <a href="/2026/05/08/post%E6%8A%A5%E5%A4%B4%E6%B3%A8%E5%85%A5/">
                             post报头注入
                         </a>
@@ -758,12 +670,12 @@ post注入时,万能密码admin’ or 1=1无法绕过验证,用户名无法通�
                     
                         <li>
                             
-                            <a href="/tags/post/">post</a>&nbsp;
+                            <a href="/tags/%E6%B3%A8%E5%85%A5/">注入</a>&nbsp;
                         </li>
                     
                         <li>
                             | 
-                            <a href="/tags/%E6%B3%A8%E5%85%A5/">注入</a>&nbsp;
+                            <a href="/tags/post/">post</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -868,6 +780,99 @@ dnsl...
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
+                        <a href="/2026/04/26/sql%E6%B3%A8%E5%85%A5/">
+                            sql注入基础
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            sql注入基础
+什么是注入
+
+所谓sql注入,就是通过把sql命令插入到web表单提交或输入域名或页面请求的查询字符串,最终达到欺骗服务器执行恶意的sql命令,从而进一步得到相应的数据信息.
+
+注入分类
+
+按照查询字段
+
+字符型: 当输入的参数为字符串时,称为字符型注入
+数字型: 当输入的参数为整形时,可以认为是数字型注入
+
+
+按照注入方式
+
+union注入
+报错注入
+布尔注入
+时间注入
+
+...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Apr 26 2026 18:00:00 GMT+0800">
+                
+                    2026-04-26
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/mysql/">mysql</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/mysql/">mysql</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/04/26/sql%E6%B3%A8%E5%85%A5/">阅读全文<span class="seo-reader-text">sql注入基础</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
                         <a href="/2026/04/26/sqlilabs/">
                             sqlilabs
                         </a>
@@ -951,99 +956,6 @@ dnsl...
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2026/04/26/sql%E6%B3%A8%E5%85%A5/">
-                            sql注入基础
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            sql注入基础
-什么是注入
-
-所谓sql注入,就是通过把sql命令插入到web表单提交或输入域名或页面请求的查询字符串,最终达到欺骗服务器执行恶意的sql命令,从而进一步得到相应的数据信息.
-
-注入分类
-
-按照查询字段
-
-字符型: 当输入的参数为字符串时,称为字符型注入
-数字型: 当输入的参数为整形时,可以认为是数字型注入
-
-
-按照注入方式
-
-union注入
-报错注入
-布尔注入
-时间注入
-
-...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Apr 26 2026 18:00:00 GMT+0800">
-                
-                    2026-04-26
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/mysql/">mysql</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/mysql/">mysql</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2026/04/26/sql%E6%B3%A8%E5%85%A5/">阅读全文<span class="seo-reader-text">sql注入基础</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
                         <a href="/2026/04/26/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9F%A5%E8%AF%A2/">
                             数据库查询
                         </a>
@@ -1093,12 +1005,12 @@ select *from users where id=(select id from users wher usern...
                     
                         <li>
                             
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                            <a href="/tags/mysql/">mysql</a>&nbsp;
                         </li>
                     
                         <li>
                             | 
-                            <a href="/tags/mysql/">mysql</a>&nbsp;
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -1180,12 +1092,12 @@ select database();		#确认所在库...
                     
                         <li>
                             
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                            <a href="/tags/mysql/">mysql</a>&nbsp;
                         </li>
                     
                         <li>
                             | 
-                            <a href="/tags/mysql/">mysql</a>&nbsp;
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -1286,11 +1198,90 @@ table_name 是...
                 </div>
             </li>
         
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/04/16/mysql1/">
+                            MYSQL
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            php mysql简介
+什么是数据库
+
+数据库是按照数据结构来组织,存储和管理数据的仓库
+每个数据库都有一个或者多个不同的api用于创建,访问,
+我们也可以将数据存储在文件中，但是在文件中读写数据速度相对较慢。所以，现在我们使用关系型数据库管理系统（RDBMS）来存储和管理大数据量。所谓的关系型数据库，是建立在关系模型基础上的数据库，借助于集合代数等数学概念和方法来处理数据库中的数据。
+RD...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Apr 16 2026 19:24:00 GMT+0800">
+                
+                    2026-04-16
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/php/">php</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/php/">php</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/04/16/mysql1/">阅读全文<span class="seo-reader-text">MYSQL</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
     </ul>
 
     <div class="home-paginator px-7 py-5">
         <div class="paginator">
-	<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa-regular fa-angle-right"></i></a>
+	<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa-regular fa-angle-right"></i></a>
 </div>
   
     </div>
@@ -1316,7 +1307,7 @@ table_name 是...
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 21 篇文章
+                        共撰写了 20 篇文章
                     </span>
                     
                 </p>

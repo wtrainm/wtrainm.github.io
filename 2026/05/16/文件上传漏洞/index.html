@@ -94,7 +94,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://wtrainm.github.io/images/redefine-og.webp">
 <meta property="article:published_time" content="2026-05-16T01:15:00.000Z">
-<meta property="article:modified_time" content="2026-05-16T08:41:43.994Z">
+<meta property="article:modified_time" content="2026-05-21T13:21:34.598Z">
 <meta property="article:author" content="梧桐">
 <meta property="article:tag" content="sql">
 <meta property="article:tag" content="文件上传">
@@ -271,7 +271,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">18</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">16</div>
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -279,7 +279,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">21</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -330,8 +330,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-05-16 16:41:43</span>
-            <span class="mobile">2026-05-16 16:41:43</span>
+            <span class="desktop">2026-05-21 21:21:34</span>
+            <span class="mobile">2026-05-21 21:21:34</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -419,9 +419,259 @@
 <li><strong>有时候验证的地方不止一条,要仔细一点</strong></li>
 </ul>
 <h3 id="pass-3">pass-3</h3>
+<h4 id="小知识点">小知识点</h4>
 <ul>
 <li>黑名单: 不允许…后缀文件上传</li>
 <li>白名单: 我只允许…后缀文件上传</li>
+</ul>
+<h4 id="步骤">步骤</h4>
+<ul>
+<li>检查源代码,发现禁用了部分后缀,发现没有禁用php3以及php5,phtml等后缀</li>
+<li>尝试修改木马后缀并上传,成功</li>
+<li><strong>注意</strong>: 新版小皮的apache并不能将php3或者php5等后缀按php文件拓展名解析.</li>
+</ul>
+<h3 id="pass-4">pass-4</h3>
+<ul>
+<li>检查源代码,发现大部分拓展名被禁用.发现.htaccess没有被禁用</li>
+<li>创建.htaccess文件里面写入<code>AddType application/x-httpd-php .jpg .txt</code>目的是想让.jpg和.txt文件按照php文件进行解析,从而达到绕过验证,进行入侵</li>
+<li>另一种方法: 利用图片挂马来进行绕过
+<ul>
+<li>在想上传文件的地方打开cmd,输入<code>copy 111.php+1.jpg/b 000.jpg</code>. 其中111.php是木马文件,1.jpg是图片.作用是将两个文件合并成000.jpg文件.因为图片是二进制文件,所以输入/b</li>
+</ul>
+</li>
+<li>然后上传000.jpg文件即可</li>
+</ul>
+<h4 id="第五关前置知识">第五关前置知识</h4>
+<ul>
+<li>.htaccess: 分布式配置文件,一般用于url重写,认证,访问控制等
+<ul>
+<li>作用范围: 特定目录(一般是网站根目录)及其子目录</li>
+<li>优先级: 较高, 可覆盖apache的主要配置文件(httpd-conf)</li>
+<li>生效方式: 修改后立刻生效</li>
+</ul>
+</li>
+<li>httpd-conf
+<ul>
+<li>作用: 包含apachehttp服务器的全局行为和默认设置</li>
+<li>作用范围:整个服务器</li>
+<li>优先级:较低</li>
+<li>生效方式; 管理员权限,重启服务器后生效</li>
+</ul>
+</li>
+<li>.user.ini
+<ul>
+<li>作用:特定于用户或特定目录的配置文件,通常位于web应用程序的根目录下</li>
+<li>它用于覆盖或追加全局配置文件(如php.ini)中的php配置选项</li>
+<li>作用范围: 存放该文件的目录以及子目录</li>
+<li>优先级: 较高,可以覆盖php.ini</li>
+<li>生效方式:立即生效</li>
+</ul>
+</li>
+<li>php.ini
+<ul>
+<li>作用: 存储了对整个php环境生效的配置选项,它通常位于php安装目录中</li>
+<li>作用范围:所有运行在该php环境中的php请求</li>
+<li>优先级: 较低</li>
+<li>生效方式: 重启php或web服务器</li>
+</ul>
+</li>
+</ul>
+<h3 id="pass-5">pass-5</h3>
+<h4 id="user-ini可以上传的前提">.user.ini可以上传的前提</h4>
+<ul>
+<li>在网站根目录建立一个phpinfo.php文件写入<code>&lt;?php phpinfo(); ?&gt;</code>,打开该网站看serverAPI是不是CGI/FastCGI,是的话即可生效(servernameAPI是指用于连接和交互的服务器端软件接口)</li>
+<li>.user.ini 可以生效并且该上传目录有php文件.</li>
+</ul>
+<h4 id="步骤-2">步骤</h4>
+<ul>
+<li>查看源代码,发现user.ini没有被禁用</li>
+<li>先创建一个.user.ini记事本.里面写上<code>auto_prepend_file=111.jpg</code>(在每一个php脚本执行之前,自动先加载并执行111.jpg这个文件,虽然文件名是.jpg图片拓展名,但php会直接把它当做php代码来解析执行)</li>
+<li>先上传.user.ini再上传木马.再去访问readme看是否成功</li>
+<li>连接链接的是readme.php文件.通过user.ini配置文件达到目的</li>
+<li>用ant连接后门(我用的php7.3.4nts的成功解析,如果版本有问题会出现错误)</li>
+</ul>
+<h4 id="另一种方法">另一种方法</h4>
+<ul>
+<li>点加空格加点</li>
+<li>抓包然后修改文件后缀(记得用ant连接时<strong>要去掉末尾多余的点</strong>)</li>
+<li>这次php用的是5.3.29版本才成功的</li>
+</ul>
+<h3 id="pass-6">pass-6</h3>
+<ul>
+<li>未对大小写进行限定</li>
+<li>直接抓包修改文件拓展名为大小写,绕过验证</li>
+</ul>
+<h3 id="pass-7">pass-7</h3>
+<ul>
+<li>发现没有去后缀空格的验证方式</li>
+<li>直接抓包修改文件拓展名,加空格绕过</li>
+</ul>
+<h3 id="pass-8">pass-8</h3>
+<ul>
+<li>跟前面关卡一样,后缀加点就行</li>
+</ul>
+<h3 id="pass-9">pass-9</h3>
+<h4 id="前置知识">前置知识</h4>
+<ul>
+<li>额外数据流: 数据流是一种用于在文件内部存储额外数据的机制,你直接打开文件是打开的默认数据流,而额外数据流你直接打开看不见,但是他会&quot;寄生&quot;在宿主文件身上.我们可以通过在文件名后面添加<code>::$DATA</code>来访问它</li>
+<li>可以用cmd来写入访问额外数据流
+<ul>
+<li>比如说写入&quot;hello&quot;	在该目录的cmd中输入<code>echo &quot;hello&quot; &gt;&gt;1.txt:nihao</code> nihao是额外数据流的空间名字</li>
+<li>在当前目录中输入<code>notepad 1.txt</code> 此时是用记事本打开1.txt文件,如果输入<code>notepad 1.txt:nihao</code>则会用记事本打开额外数据流的内容</li>
+</ul>
+</li>
+<li>写入方式:
+<ul>
+<li>echo: <code>echo 内容 &gt;&gt;文件名:数据流名</code>将写的内容输入到额外数据流中</li>
+<li>type: <code>type 2.txt &gt;&gt; 1.txt:nihao</code> 将2.txt的内容写进1.txt的额外数据流之中</li>
+</ul>
+</li>
+<li>查看方法:
+<ul>
+<li><code>notepad 文件名: 数据流名</code></li>
+</ul>
+</li>
+<li><strong>在php中,文件的附加数据流是不会验证后缀的</strong>,仅表示数据流而不是文件</li>
+</ul>
+<h4 id="步骤-3">步骤</h4>
+<ul>
+<li>查看源码,相对比发现没有禁用::DATA数据流</li>
+<li>随便写入一个内容到木马的额外数据流里面,抓包在文件拓展名后面加上::&amp;DATA.</li>
+<li>上传成功后打开文件网址,将::DATA去掉,测试连接</li>
+</ul>
+<h3 id="pass-10">pass-10</h3>
+<ul>
+<li>查看源代码,发现黑名单,去点去空,去字符串,大小写绕过被禁.但是去点去空只执行一次.考虑加点加空格再加点</li>
+<li>测试连接</li>
+</ul>
+<h3 id="pass-11">pass-11</h3>
+<ul>
+<li>查看源码,发现会替换很多后缀名为空导致无法正常上传木马</li>
+<li>考虑双写绕过(类似sql注入)</li>
+<li>抓包修改后缀名,测试连接</li>
+</ul>
+<h3 id="pass-12-get请求获得路径-get是用url传递的参数">pass-12(get请求获得路径,get是用url传递的参数)</h3>
+<h4 id="前置知识-在5-3以下的版本使用-00截断效果明显-版本过高可能使用不了">前置知识(在5.3以下的版本使用%00截断效果明显,版本过高可能使用不了)</h4>
+<ul>
+<li>空字符: 在老版本的php(等计算机语言),当发现空字符时,不会读取后续内容</li>
+<li>0x00: 在编程语言中使用</li>
+<li>%00: 在url编码中使用</li>
+<li>前提:
+<ul>
+<li>PHP版本必须低于5.3.4，且magic_quotes_gpc需关闭。</li>
+<li>高版本PHP（如5.4.45及以上）已修复此漏洞，不再受%00截断影响。</li>
+</ul>
+</li>
+</ul>
+<h4 id="步骤-在php-ini里面找到magic-quotes-gpc-将On改为Off-再重启小皮">步骤(在php.ini里面找到magic_quotes_gpc,将On改为Off,再重启小皮)</h4>
+<ul>
+<li>先分析,白名单,有临时路径和真实路径的参与,先上传白名单允许的文件拓展名</li>
+<li>再抓包,在upload/(页面顶部)后面加上111.php文件(将文件用php格式保存),最后在后面添加%00把后续内容截断.</li>
+<li>测试连接</li>
+</ul>
+<h3 id="pass-13-post">pass-13(post)</h3>
+<ul>
+<li>一样的模式,但是要注意upload/在文件中部,而非顶部.在upload/后面写上111.php然后空格,选中空格,在右侧的工具栏用16进制编码修改成00.(我的没有显示出来,但是去ant连接成功)</li>
+</ul>
+<h3 id="pass-14">pass-14</h3>
+<h4 id="前置知识-2">前置知识</h4>
+<ul>
+<li>图片字节标识
+<ul>
+<li>JPEG/JFIF(常见的照片格式): 头两个字节为 0xFF 0xD8</li>
+<li>PNG(无损压缩格式): 头两个字节为 0x89 0x50</li>
+<li>GIF(支持动漫的图像格式): 头两个字节为 0x47 0x49</li>
+<li>BMP(windows位图格式): 头两个字节为 0x42 0x4D</li>
+<li>TIFF(标签图像文件格式): 头两个字节可以是不同的数值</li>
+</ul>
+</li>
+<li>字节是计算机中存储和传输数据的基本单位,通常表示为一个八位(8-bit)的二进制数字序列.</li>
+<li>utf-8中,一个英文字符占一个字节,中文(含繁体字)占三个字节</li>
+</ul>
+<h4 id="步骤-4">步骤</h4>
+<ul>
+<li>检查源代码,发现白名单,并且验证方法是打开文件的前两个字节判断</li>
+<li>将一句话木马的字节标识符改为白名单所允许的格式(<strong>该题检验文件拓展名的方式是检验文件头两个字节</strong>)</li>
+<li>再利用文件包含漏洞运行木马的php,从而达到入侵的目的
+<ul>
+<li>发现文件包含漏洞: 新版本的php在旧版本的php基础上修改,所以会引用旧版本的文件.如果没有做文件过滤的话,我们就可以通过文件包含找到漏洞,从而上传文件,该文件是以php的形式解析,所以可以使得木马成功入侵</li>
+</ul>
+</li>
+<li>文件包含漏洞会以php方式解析,此时我们知道他是用get传参,只需要<code>?file=upload/文件名</code>,替换掉file文件并以php的形式解析木马(upload是存放文件的文件夹)</li>
+<li>测试连接</li>
+</ul>
+<h3 id="pass-15">pass-15</h3>
+<ul>
+<li><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.5.20.1.png"
+                      alt=""
+                >
+<ul>
+<li>常量值:1是GIF,2是JPEG,3是PNG,4是SWF,5是PSD,6是BMP</li>
+</ul>
+</li>
+<li>跟上一关一样的步骤,注意使用copy操作文件挂马的时候,先把图片写前面,因为把木马写前面容易报错</li>
+</ul>
+<h3 id="passs-16">passs-16</h3>
+<ul>
+<li>上传正常文件黑屏,挂马也黑屏,不理解</li>
+</ul>
+<h3 id="pass-17-二次渲染">pass-17(二次渲染)</h3>
+<ul>
+<li>查看源代码,发现有二次渲染(上传文件之后会将文件渲染一次生成新图片,会删除一些与图片无关内容),但是图片本身的内容会进行保留,</li>
+<li>先上传带马文件,另存为之后与源文件对比,看哪些内容是不会进行改动(GIF图片相似的地方多一些,优先考虑GIF图片)</li>
+<li>将一句话木马插入进去</li>
+<li>测试连接</li>
+</ul>
+<h3 id="pass-18">pass-18</h3>
+<ul>
+<li>生成小马的语句
+<ul>
+<li><code>&lt;?php fputs(fopen('shell.php','w'),'&lt;?php @eval($_POST[&quot;123&quot;])?&gt;');?&gt;</code></li>
+<li><code>&lt;?php $a='PD9waHAQGV2YWwoJF9QT1NUWydhj10pOz8+'; $myfile = fopen(&quot;shell.php&quot;,&quot;w&quot;); fwrite($myfile,base64_decode($a)); fclose($myfile); ?&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="步骤-5">步骤</h4>
+<ul>
+<li>先查源代码,清楚我们可以用条件竞争的方法去进行木马入侵(原理是,不管什么文件都会上传至服务器,我们在短时间多次发送上传文件和读取文件的请求.凭借服务器的延迟时间,将小马文件打开,生成木马再访问,从而达到入侵的目的)</li>
+<li>通过抓包截取上传文件的包,进行攻击</li>
+<li>找到上传服务器文件的位置,抓包并攻击</li>
+<li>总要相信付出会有回报的(我先跳过了)</li>
+</ul>
+<h3 id="pass-19-7z是类似于-zip的压缩文件">pass-19(.7z是类似于.zip的压缩文件)</h3>
+<ul>
+<li>阿帕奇会从后往左解析后缀,如果遇到解析不出来的就会往左看能解析的拓展名.</li>
+<li>先上传1.php.7z的文件,发现能够上传成功,到后面会将.7z与时间戳合并进行重命名.我们需要在重命名之前,访问小马文件从而使得解析php成功<br>
+(依旧没弄出来)</li>
+</ul>
+<h3 id="pass-20">pass-20</h3>
+<ul>
+<li>后缀绕过</li>
+<li>usr.ini</li>
+<li>点空格点</li>
+<li>点空格</li>
+<li>.(php函数&quot;move_uploaded_file&quot;机制)</li>
+<li>12关方法</li>
+<li>data</li>
+</ul>
+<h3 id="pass-21">pass-21</h3>
+<ul>
+<li>查看源代码,发现会上传数组(<code>!is_array(file))</code>),还会检查数组最后一位拓展名是否通过白名单.</li>
+<li>所以要创建一份数组用于检测通过</li>
+</ul>
+<h4 id="步骤-6">步骤</h4>
+<ul>
+<li>抓包修改<code>content-type</code></li>
+<li><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.5.21.1.png"
+                      alt=""
+                ></li>
+<li>测试连接</li>
 </ul>
 
 		</div>
@@ -437,7 +687,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2026-05-16 16:41:43
+                    :</strong> 2026-05-21 21:21:34
             </li>
         
         <li>
@@ -566,7 +816,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">sql,文件上传</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">什么是文件上传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFwebshell"><span class="nav-text">什么是webshell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-1"><span class="nav-text">pass-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-2"><span class="nav-text">pass-2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-3"><span class="nav-text">pass-3</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">什么是文件上传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFwebshell"><span class="nav-text">什么是webshell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-1"><span class="nav-text">pass-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-2"><span class="nav-text">pass-2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-3"><span class="nav-text">pass-3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-4"><span class="nav-text">pass-4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-5"><span class="nav-text">pass-5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-6"><span class="nav-text">pass-6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-7"><span class="nav-text">pass-7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-8"><span class="nav-text">pass-8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-9"><span class="nav-text">pass-9</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-10"><span class="nav-text">pass-10</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-11"><span class="nav-text">pass-11</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-12-get%E8%AF%B7%E6%B1%82%E8%8E%B7%E5%BE%97%E8%B7%AF%E5%BE%84-get%E6%98%AF%E7%94%A8url%E4%BC%A0%E9%80%92%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-text">pass-12(get请求获得路径,get是用url传递的参数)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-13-post"><span class="nav-text">pass-13(post)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-14"><span class="nav-text">pass-14</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-15"><span class="nav-text">pass-15</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#passs-16"><span class="nav-text">passs-16</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-17-%E4%BA%8C%E6%AC%A1%E6%B8%B2%E6%9F%93"><span class="nav-text">pass-17(二次渲染)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-18"><span class="nav-text">pass-18</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-19-7z%E6%98%AF%E7%B1%BB%E4%BC%BC%E4%BA%8E-zip%E7%9A%84%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6"><span class="nav-text">pass-19(.7z是类似于.zip的压缩文件)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-20"><span class="nav-text">pass-20</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-21"><span class="nav-text">pass-21</span></a></li></ol>
 
 	</div>
 </div>
@@ -594,7 +844,7 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 21 篇文章
+                        共撰写了 20 篇文章
                     </span>
                     
                 </p>

@@ -92,21 +92,21 @@
 <meta property="og:site_name" content="梧桐蔽日,雨夜长鸣">
 <meta property="og:description" content="梧桐夜的个人技术博客 - Python&#x2F;CTF&#x2F;Web安全学习笔记">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wtrainm.github.io/images/avatar-wutong.svg">
+<meta property="og:image" content="https://wtrainm.github.io/images/avatar-anime.svg">
 <meta property="article:published_time" content="2026-05-16T01:15:00.000Z">
 <meta property="article:modified_time" content="2026-05-21T13:59:09.036Z">
 <meta property="article:author" content="梧桐">
 <meta property="article:tag" content="sql">
 <meta property="article:tag" content="文件上传">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://wtrainm.github.io/images/avatar-wutong.svg">
+<meta name="twitter:image" content="https://wtrainm.github.io/images/avatar-anime.svg">
     
     
     <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/images/favicon-wutong.svg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-wutong.svg">
-    <meta name="theme-color" content="#1a1a2e">
-    <link rel="shortcut icon" href="/images/favicon-wutong.svg">
+    <link rel="icon" type="image/png" href="/images/avatar-anime.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar-anime.svg">
+    <meta name="theme-color" content="#D4A5B5">
+    <link rel="shortcut icon" href="/images/avatar-anime.svg">
     <!--- Page Info-->
     
     <title>
@@ -130,237 +130,223 @@
                 
                     <style>
   /* =============================================
-     梧桐夜景 · 夜幕星空  — 全局覆盖
+     暖樱动漫风 ✦ 以动漫 Banner 为基础延伸所有背景
+     文章文字区：实色背景（无透明）+ 暗纹
      ============================================= */
 
-  /* --- 1. 页面背景：深空紫渐变（首页/文章/归档/标签 全部统一） --- */
+  /* --- 1. 页面背景：暖色调渐变（首页+文章+归档+标签统一） --- */
   body {
-    background: linear-gradient(160deg, #0f0f23 0%, #1a1a2e 25%, #2d2d5e 55%, #4a3f6b 80%, #6C5CE7 100%) fixed !important;
+    background: linear-gradient(170deg, #FCE4EC 0%, #F5E0EB 15%, #EDD8EC 35%, #E0D8F0 55%, #E8E0F0 75%, #F0E6F6 100%) fixed !important;
     background-attachment: fixed !important;
     min-height: 100vh;
   }
 
-  /* --- 2. Preloader（深空渐变，修复白闪） --- */
+  /* --- 2. Preloader（暖粉渐变） --- */
   .preloader {
-    background: linear-gradient(135deg, #0f0f23, #1a1a2e, #2d2d5e) !important;
+    background: linear-gradient(135deg,#FCE4EC,#E8D5F5,#D4E8F5) !important;
   }
   .preloader .preloader-message {
-    color: rgba(255, 255, 255, 0.85) !important;
+    color: #7A4D6E !important;
     font-family: 'ZCOOL QingKe HuangYou', cursive;
     font-size: 1.6rem;
-    text-shadow: 0 2px 12px rgba(108, 92, 231, 0.3);
-    animation: preloaderPulse 1.5s ease-in-out infinite;
+    text-shadow: 0 2px 8px rgba(255,183,197,0.2);
+    animation: preloadPulse 1.5s ease infinite;
   }
-  @keyframes preloaderPulse {
-    0%, 100% { opacity: 0.8; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.04); }
+  @keyframes preloadPulse {
+    0%,100%{opacity:.8;transform:scale(1)}
+    50%{opacity:1;transform:scale(1.04)}
   }
   .preloader .preloader-icon {
-    border-color: rgba(108, 92, 231, 0.3) !important;
-    border-top-color: #6C5CE7 !important;
+    border-color: rgba(232,180,200,0.3)!important;
+    border-top-color:#E8B4C8!important;
   }
 
-  /* --- 3. 首页文章卡片 --- */
+  /* --- 3. 首页文章卡片（半透暖白） --- */
   .redefine-post-card {
-    background: rgba(255, 255, 255, 0.88) !important;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(108, 92, 231, 0.15);
-    border-radius: 18px !important;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08) !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255,255,255,0.85)!important;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border:1px solid rgba(232,180,200,0.2);
+    border-radius:18px!important;
+    box-shadow:0 4px 20px rgba(212,165,181,0.1)!important;
+    transition:all .3s cubic-bezier(.4,0,.2,1);
   }
   .redefine-post-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 35px rgba(108, 92, 231, 0.15) !important;
-    border-color: rgba(108, 92, 231, 0.25);
+    transform:translateY(-4px);
+    box-shadow:0 8px 30px rgba(232,180,200,0.15)!important;
+    border-color:rgba(232,180,200,0.25);
   }
 
-  /* --- 4. 文章阅读页 — 毛玻璃卡片 + 清晰文字背景 --- */
-  .page-container { background: transparent !important; }
-  .main-content-inner { background: transparent !important; }
-  .home-content-area { background: transparent !important; }
+  /* --- 4. ★★★ 文章文字背景：实色 + 暖色纹理（不透明）★★★ --- */
+  .page-container{background:transparent!important}
+  .main-content-inner{background:transparent!important}
+  .home-content-area{background:transparent!important}
 
   .article-content-area,
   .post-content-area {
-    background: rgba(255, 255, 255, 0.92) !important;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px !important;
-    border: 1px solid rgba(108, 92, 231, 0.12);
-    padding: 2rem 2.8rem !important;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06) !important;
-    position: relative;
-    z-index: 2;
+    /* 实色暖白背景，无透明 */
+    background: #FEF8FA !important;
+    /* 叠加暖色纹理图案 */
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(232,180,200,0.06) 0, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(212,165,181,0.05) 0, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(248,200,220,0.04) 0, transparent 50%) !important;
+    border-radius:20px!important;
+    border:1px solid rgba(232,180,200,0.2);
+    padding:2rem 2.8rem!important;
+    box-shadow:0 6px 32px rgba(212,165,181,0.08)!important;
+    position:relative;
+    z-index:2;
   }
+
   .article-content-area h1,
   .article-content-area h2,
   .article-content-area h3,
   .article-content-area p,
   .article-content-area li,
   .article-content-area blockquote,
-  .article-content-area .article-entry,
   .post-content-area h1,
   .post-content-area h2,
   .post-content-area h3,
   .post-content-area p,
-  .post-content-area li,
-  .post-content-area .post-entry {
-    position: relative;
-    z-index: 3;
+  .post-content-area li {
+    position:relative;
+    z-index:3;
+    color:#4A3A4A!important;
   }
+
+  /* 文章 meta 区域 */
   .article-meta-info {
-    background: rgba(108, 92, 231, 0.06) !important;
-    border-radius: 12px !important;
-    padding: 0.8rem 1.2rem !important;
-    margin-bottom: 1.2rem !important;
-    border: 1px solid rgba(108, 92, 231, 0.08);
+    background: rgba(232,180,200,0.08)!important;
+    border-radius:12px!important;
+    padding:.8rem 1.2rem!important;
+    margin-bottom:1.2rem!important;
+    border:1px solid rgba(232,180,200,0.1);
   }
 
   /* --- 5. 侧边栏 --- */
   .sidebar-content {
-    background: rgba(255, 255, 255, 0.82) !important;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-radius: 18px !important;
-    border: 1px solid rgba(108, 92, 231, 0.12);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    background: rgba(255,255,255,0.8)!important;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-radius:18px!important;
+    border:1px solid rgba(232,180,200,0.15);
+    box-shadow:0 4px 18px rgba(212,165,181,0.06)!important;
   }
 
-  /* --- 6. 首页 Banner --- */
-  .home-banner .title { 
-    font-family: 'ZCOOL QingKe HuangYou', cursive; 
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
-    letter-spacing: 3px;
+  /* --- 6. 首页 Banner 文字 --- */
+  .home-banner .title{ 
+    font-family:'ZCOOL QingKe HuangYou',cursive;
+    text-shadow:0 2px 16px rgba(255,183,197,0.3);
+    letter-spacing:3px;
   }
-  @media (max-width: 768px) {
-    .home-banner .title { font-size: 1.8rem !important; }
+  @media(max-width:768px){
+    .home-banner .title{font-size:1.8rem!important}
   }
 
   /* --- 7. 图片 hover --- */
-  .article-entry img { 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    border-radius: 12px;
-  }
-  .article-entry img:hover { 
-    transform: scale(1.02); 
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12); 
-  }
+  .article-entry img{transition:transform .3s ease,box-shadow .3s ease;border-radius:12px}
+  .article-entry img:hover{transform:scale(1.02);box-shadow:0 8px 28px rgba(212,165,181,0.12)}
 
   /* --- 8. 代码块 --- */
-  .article-entry figure.highlight {
-    border-radius: 12px !important;
-    overflow: hidden;
-  }
+  .article-entry figure.highlight{border-radius:12px!important;overflow:hidden}
 
-  /* --- 9. 滚动条 --- */
-  ::-webkit-scrollbar { width: 7px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { 
-    background: linear-gradient(#6C5CE7, #1a1a2e); 
-    border-radius: 4px; 
-  }
-  ::-webkit-scrollbar-thumb:hover { background: linear-gradient(#a29bfe, #2d3436); }
+  /* --- 9. 滚动条（暖粉） --- */
+  ::-webkit-scrollbar{width:7px}
+  ::-webkit-scrollbar-track{background:transparent}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(#E8B4C8,#D4A5B5);border-radius:4px}
+  ::-webkit-scrollbar-thumb:hover{background:linear-gradient(#FFB7C5,#C9A0B0)}
 
-  /* --- 10. 选中文字 --- */
-  ::selection { background: rgba(108, 92, 231, 0.3); color: #fff; }
+  /* --- 10. 选中 --- */
+  ::selection{background:rgba(232,180,200,0.3);color:#4A3A4A}
 
   /* --- 11. 返回顶部 --- */
-  .back-to-top { 
-    background: linear-gradient(135deg, #6C5CE7, #1a1a2e) !important;
-    border: none !important;
-    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.25) !important;
+  .back-to-top{
+    background:linear-gradient(135deg,#E8B4C8,#D4A5B5)!important;
+    border:none!important;
+    box-shadow:0 4px 15px rgba(232,180,200,0.2)!important;
+    color:#4A3A4A!important;
   }
 
-  /* --- 12. 文章目录 --- */
-  .toc-content {
-    background: rgba(255, 255, 255, 0.82) !important;
-    backdrop-filter: blur(10px);
-    border-radius: 14px !important;
-    border: 1px solid rgba(108, 92, 231, 0.1);
+  /* --- 12. 目录 --- */
+  .toc-content{
+    background:rgba(255,255,255,0.82)!important;
+    backdrop-filter:blur(10px);
+    border-radius:14px!important;
+    border:1px solid rgba(232,180,200,0.12);
   }
 
   /* --- 13. Footer --- */
-  footer {
-    background: rgba(15, 15, 35, 0.5) !important;
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(108, 92, 231, 0.1);
+  footer{
+    background:rgba(232,180,200,0.18)!important;
+    backdrop-filter:blur(8px);
+    border-top:1px solid rgba(232,180,200,0.15);
   }
-  footer, footer * { color: rgba(255, 255, 255, 0.7) !important; }
+  footer,footer *{color:#5A4A5A!important}
 
-  /* --- 14. 标签云 / 分类 --- */
+  /* --- 14. 标签/分类/归档 --- */
   .tag-cloud-card,
-  .category-list-card {
-    background: rgba(255, 255, 255, 0.85) !important;
-    backdrop-filter: blur(12px);
-    border-radius: 18px !important;
-    border: 1px solid rgba(108, 92, 231, 0.12);
+  .category-list-card,
+  .archive-content{
+    background:rgba(255,255,255,0.85)!important;
+    backdrop-filter:blur(10px);
+    border-radius:18px!important;
+    border:1px solid rgba(232,180,200,0.15);
+  }
+  .archive-content{padding:2rem!important}
+
+  /* --- 15. 导航栏 --- */
+  .navbar-content:not(.has-home-banner){
+    background:linear-gradient(135deg,rgba(232,180,200,0.85),rgba(212,165,181,0.85))!important;
+    backdrop-filter:blur(10px);
+  }
+  .navbar-content .navbar-list a{color:#4A3A4A!important}
+
+  /* --- 16. 搜索弹窗 --- */
+  .search-popup{
+    background:#FEF8FA!important;
+    border:1px solid rgba(232,180,200,0.15);
   }
 
-  /* --- 15. 归档页 --- */
-  .archive-content {
-    background: rgba(255, 255, 255, 0.85) !important;
-    backdrop-filter: blur(12px);
-    border-radius: 18px !important;
-    padding: 2rem !important;
-    border: 1px solid rgba(108, 92, 231, 0.12);
+  /* --- 17. 关于页 --- */
+  .about-card{
+    background:#FEF8FA!important;
+    background-image:
+      radial-gradient(circle at 30% 20%,rgba(232,180,200,0.06) 0,transparent 50%),
+      radial-gradient(circle at 70% 80%,rgba(212,165,181,0.04) 0,transparent 50%)!important;
+    border-radius:20px!important;
+    border:1px solid rgba(232,180,200,0.15);
+    padding:2rem;
+    box-shadow:0 6px 28px rgba(212,165,181,0.06)!important;
   }
 
-  /* --- 16. 导航栏 --- */
-  .navbar-content:not(.has-home-banner) {
-    background: linear-gradient(135deg, rgba(108,92,231,0.88), rgba(26,26,46,0.88)) !important;
-    backdrop-filter: blur(10px);
-  }
-
-  /* --- 17. 搜索弹窗 --- */
-  .search-popup {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(108, 92, 231, 0.12);
-  }
-
-  /* --- 18. 关于页 --- */
-  .about-card {
-    background: rgba(255, 255, 255, 0.85) !important;
-    backdrop-filter: blur(16px);
-    border-radius: 20px !important;
-    border: 1px solid rgba(108, 92, 231, 0.12);
-    padding: 2rem;
-    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.06) !important;
-  }
-
-  /* --- 19. 404 --- */
-  .error-page {
-    background: rgba(255, 255, 255, 0.8) !important;
-    backdrop-filter: blur(16px);
-    border-radius: 24px !important;
-    border: 1px solid rgba(108, 92, 231, 0.12);
-  }
-
-  /* ======= Dark Mode 适配 ======= */
-  @media (prefers-color-scheme: dark) {
-    body {
-      background: linear-gradient(160deg, #06060f 0%, #0a0a1a 25%, #1a1a3e 55%, #2d2d5e 80%, #3a3360 100%) fixed !important;
+  /* ======= 🌙 Dark Mode (暖夜) ======= */
+  @media(prefers-color-scheme:dark){
+    body{
+      background:linear-gradient(170deg,#1A1525 0%,#2A2035 20%,#3A2A45 40%,#3D2D50 60%,#352D4A 80%,#2A2535 100%) fixed!important;
     }
     .redefine-post-card,
-    .post-content-area,
-    .article-content-area,
     .sidebar-content,
     .tag-cloud-card,
     .category-list-card,
     .archive-content,
     .toc-content,
-    .search-popup {
-      background: rgba(18, 15, 35, 0.9) !important;
-      border-color: rgba(108, 92, 231, 0.15);
-      color: rgba(230, 220, 240, 0.9) !important;
+    .search-popup{
+      background:rgba(30,22,45,0.88)!important;
+      border-color:rgba(232,180,200,0.1);
+      color:rgba(230,215,240,0.9)!important;
     }
-    .redefine-post-card:hover {
-      box-shadow: 0 8px 35px rgba(108, 92, 231, 0.18) !important;
-    }
-    footer {
-      background: rgba(6, 6, 15, 0.5) !important;
-      border-top: 1px solid rgba(108, 92, 231, 0.08);
+    .redefine-post-card:hover{box-shadow:0 8px 30px rgba(232,180,200,0.08)!important}
+    /* 文章区：实色深底 */
+    .article-content-area,
+    .post-content-area,
+    .about-card{
+      background:#2A2040!important;
+      background-image:
+        radial-gradient(circle at 30% 20%,rgba(232,180,200,0.04) 0,transparent 50%),
+        radial-gradient(circle at 70% 80%,rgba(212,165,181,0.03) 0,transparent 50%)!important;
+      border-color:rgba(232,180,200,0.08);
+      color:rgba(230,215,240,0.92)!important;
     }
     .article-content-area h1,
     .article-content-area h2,
@@ -369,24 +355,19 @@
     .article-content-area li,
     .post-content-area h1,
     .post-content-area h2,
-    .post-content-area h3 {
-      color: rgba(230, 220, 240, 0.92) !important;
+    .post-content-area h3,
+    .post-content-area p,
+    .post-content-area li{color:rgba(230,215,240,0.92)!important}
+    .article-meta-info{background:rgba(232,180,200,0.06)!important}
+    footer{background:rgba(26,21,37,0.4)!important;border-color:rgba(232,180,200,0.06)}
+    footer,footer *{color:rgba(200,190,210,0.7)!important}
+    .back-to-top{background:linear-gradient(135deg,#4A3A5A,#3A2A45)!important;color:#E0D0E8!important}
+    .navbar-content:not(.has-home-banner){
+      background:linear-gradient(135deg,rgba(50,35,65,0.88),rgba(40,30,55,0.88))!important;
     }
-    .article-meta-info {
-      background: rgba(108, 92, 231, 0.08) !important;
-    }
-    .back-to-top {
-      background: linear-gradient(135deg, #3a2a6b, #1a1a3e) !important;
-    }
-    .navbar-content:not(.has-home-banner) {
-      background: linear-gradient(135deg, rgba(40,30,75,0.9), rgba(15,12,35,0.9)) !important;
-    }
-    .preloader {
-      background: linear-gradient(135deg, #06060f, #0a0a1a, #1a1a3e) !important;
-    }
-    .preloader .preloader-message {
-      color: rgba(162, 155, 254, 0.85) !important;
-    }
+    .navbar-content .navbar-list a{color:#D8C8E8!important}
+    .preloader{background:linear-gradient(135deg,#1A1525,#2A2035,#3A2A45)!important}
+    .preloader .preloader-message{color:#D0B8D8!important}
   }
 </style>
 
@@ -429,7 +410,7 @@
 
     <script id="hexo-configurations">
     window.config = {"hostname":"wtrainm.github.io","root":"/","language":"zh-CN","path":"search.json"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.8,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["🐱 摸鱼选手"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"atom-one-light","dark":"night-owl"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/banner-wutong-light.svg","skip_dirs":[]}},"colors":{"primary":"#1a1a2e","secondary":"#6C5CE7","default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"ZCOOL QingKe HuangYou, Source Han Sans SC, Noto Sans SC","url":"https://cdn.jsdelivr.net/npm/zcool-qingke-huangyou@1.0.0/css/zcool-qingke-huangyou.min.css"},"english":{"enable":false,"family":null,"url":null},"title":{"enable":true,"family":"ZCOOL QingKe HuangYou, cursive","url":"https://cdn.jsdelivr.net/npm/zcool-qingke-huangyou@1.0.0/css/zcool-qingke-huangyou.min.css"}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"梧桐蔽日,雨夜长鸣"},"side_tools":{"gear_rotation":true,"auto_expand":true},"open_graph":{"enable":true,"image":"/images/avatar-wutong.svg","description":"梧桐夜的个人技术博客 - Python/CTF/Web安全学习笔记"},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/banner-wutong-light.svg","dark":"/images/banner-wutong-dark.svg"},"title":"梧桐蔽日,雨夜长鸣","subtitle":{"text":["记录Python · CTF · Web安全学习之路","纸上得来终觉浅，绝知此事要躬行","心怀好奇，探索技术的无限可能"],"hitokoto":{"enable":true,"show_author":true,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":true,"family":"ZCOOL QingKe HuangYou, cursive","url":null},"social_links":{"enable":true,"style":"default","links":[{"icon":"fa-brands fa-github","url":"https://github.com/wtrainm"},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"mailto:wtrainm@outlook.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":true,"color":{"left":"#6C5CE7","right":"#1a1a2e","transparency":25},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"归档":{"path":"/archives","icon":"fa-regular fa-archive"},"标签":{"path":"/tags","icon":"fa-regular fa-tags"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"},"关于":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"right","first_item":"menu","announcement":"日常摸鱼，顺便写写博客 🐟","show_on_mobile":true,"links":{"首页":{"path":"/","icon":"fa-regular fa-house"},"归档":{"path":"/archives","icon":"fa-regular fa-archive"},"标签":{"path":"/tags","icon":"fa-regular fa-tags"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"},"关于":{"path":"/about","icon":"fa-regular fa-user"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #6C5CE7\"></i>","start":"2026/3/15 10:00:00","statistics":true,"customize":"永远相信美好的事情即将发生 🚀","icp":{"enable":false,"number":null,"url":null}},"footerStart":"2026/3/15 10:00:00","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.8,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["✦ 樱花树下"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"atom-one-light","dark":"night-owl"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/banner-anime-light.svg","skip_dirs":[]}},"colors":{"primary":"#D4A5B5","secondary":"#E8B4C8","default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"ZCOOL QingKe HuangYou, Source Han Sans SC, Noto Sans SC","url":"https://cdn.jsdelivr.net/npm/zcool-qingke-huangyou@1.0.0/css/zcool-qingke-huangyou.min.css"},"english":{"enable":false,"family":null,"url":null},"title":{"enable":true,"family":"ZCOOL QingKe HuangYou, cursive","url":"https://cdn.jsdelivr.net/npm/zcool-qingke-huangyou@1.0.0/css/zcool-qingke-huangyou.min.css"}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"梧桐蔽日,雨夜长鸣"},"side_tools":{"gear_rotation":true,"auto_expand":true},"open_graph":{"enable":true,"image":"/images/avatar-anime.svg","description":"梧桐夜的个人技术博客 - Python/CTF/Web安全学习笔记"},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/banner-anime-light.svg","dark":"/images/banner-anime-dark.svg"},"title":"梧桐蔽日,雨夜长鸣","subtitle":{"text":["记录Python · CTF · Web安全学习之路","纸上得来终觉浅，绝知此事要躬行","心怀好奇，探索技术的无限可能"],"hitokoto":{"enable":true,"show_author":true,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#5D3A5E","dark":"#E8D5F5"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":true,"family":"ZCOOL QingKe HuangYou, cursive","url":null},"social_links":{"enable":true,"style":"default","links":[{"icon":"fa-brands fa-github","url":"https://github.com/wtrainm"},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"mailto:wtrainm@outlook.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":true,"color":{"left":"#E8B4C8","right":"#D4A5B5","transparency":18},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"归档":{"path":"/archives","icon":"fa-regular fa-archive"},"标签":{"path":"/tags","icon":"fa-regular fa-tags"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"},"关于":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"right","first_item":"menu","announcement":"日常摸鱼，顺便写写博客 ✦","show_on_mobile":true,"links":{"首页":{"path":"/","icon":"fa-regular fa-house"},"归档":{"path":"/archives","icon":"fa-regular fa-archive"},"标签":{"path":"/tags","icon":"fa-regular fa-tags"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"},"关于":{"path":"/about","icon":"fa-regular fa-user"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #E8B4C8\"></i>","start":"2026/3/15 10:00:00","statistics":true,"customize":"永远相信美好的事情即将发生 ✦","icp":{"enable":false,"number":null,"url":null}},"footerStart":"2026/3/15 10:00:00","mermaid":{"style":{"light":"default","dark":"dark"}}};
     window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
     window.i18n = {"search":"站内搜索您需要的内容...","toc":"目录","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","post":"文章","posts":"文章","tagcloud":"标签云","comment":"评论","comments":"评论","top":"置顶","sticky":"置顶","go-back-home":"回到首页","masonry_loading":"照片加载中...","image_viewer":"图片查看器","close":"关闭","exif":{"title":"EXIF","cards":{"camera":"相机","lens":"镜头","exposure":"曝光","other":"其他"},"fields":{"make":"品牌","model":"机型","date_taken":"拍摄时间","lens_model":"镜头","focal_length":"焦距","focus_mode":"对焦模式","shutter":"快门","aperture":"光圈","iso":"感光度","exposure_program":"曝光程序","exposure_compensation":"曝光补偿","metering_mode":"测光模式","flash":"闪光灯","white_balance":"白平衡","latitude":"纬度","longitude":"经度","altitude":"海拔"},"status":{"loading":"加载中...","no_exif":"无 EXIF 信息","library_missing":"EXIF 库未加载","image_source_missing":"图片地址不可用","unavailable":"EXIF 不可用（可能被 CORS 阻止或缺少元数据）","flag_unavailable":"EXIF 不可用"}},"home":"首页","archive":"归档","archives":"归档","about":"关于","links":"链接","link":"链接","friends":"友情链接","friend":"友情链接","timeline":"时间轴","shuoshuo":"说说","bookmarks":"书签","site_uv":"访问人数","site_pv":"总访问量","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","status":"状态","runtime":"博客已运行","days":"天","hours":"小时","minutes":"分钟","seconds":"秒","optimized_by":"并由 Evan 进行优化","rights":"版权所有","site_posts":"共撰写了 %s 篇文章","site_wordcount":"共 %s 字","copyright":{"title":"标题","author":"作者","link":"链接","create_time":"创建于","update_time":"更新于","license_title":"版权声明","license_content":"本文章采用 %s 进行许可。","all_rights_reserved":"版权所有 &#169 %s，禁止转载。","public_domain":"本文为公有领域作品，可自由转载、引用。"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"},"create_time":"创建","update_time":"更新","expired":"这篇文章最后更新于 %s 天前，内容可能已经过时。"};
     window.data = {"masonry":false};
@@ -628,7 +609,7 @@
         <div class="left">
             
                 <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
-                    <img src="/images/avatar-wutong.svg" class="w-full h-full rounded-xs">
+                    <img src="/images/avatar-anime.svg" class="w-full h-full rounded-xs">
                 </a>
             
             <a class="logo-title" href="/">
@@ -914,13 +895,13 @@
 		
 		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
 			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
-				<img src="/images/avatar-wutong.svg">
+				<img src="/images/avatar-anime.svg">
 			</div>
 			<div class="info flex flex-col justify-between">
 				<div class="author flex items-center">
 					<span class="name text-default-text-color text-lg font-semibold">梧桐夜</span>
 					
-					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">🐱 摸鱼选手</span>
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">✦ 樱花树下</span>
 					
 				</div>
 				<div class="meta-info">
@@ -1446,7 +1427,7 @@
 			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
     <div class="info-container py-3 text-center">
         
-            <div class="customize-info my-1">永远相信美好的事情即将发生 🚀</div>
+            <div class="customize-info my-1">永远相信美好的事情即将发生 ✦</div>
         
         <div class="text-center">
             &copy;
@@ -1454,7 +1435,7 @@
               <span>2026</span>
               -
             
-            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #6C5CE7"></i>&nbsp;&nbsp;<a href="/">梧桐夜</a>
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #E8B4C8"></i>&nbsp;&nbsp;<a href="/">梧桐夜</a>
             
                 
                 <p class="post-count space-x-0.5">
@@ -1523,7 +1504,7 @@
 
                     
                         <script data-swup-reload-script>
-  console.log('%c 🐱 梧桐夜の博客 — 夜幕星空 ', 'background: linear-gradient(135deg, #6C5CE7, #1a1a2e); color: #fff; font-size: 14px; padding: 8px 18px; border-radius: 6px;');
+  console.log('%c ✦ 樱花暖夜 · 梧桐小馆 ✦ ','background:linear-gradient(135deg,#E8B4C8,#D4A5B5);color:#4A3A4A;font-size:14px;padding:8px 18px;border-radius:6px;');
 </script>
 
                     

@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="梧桐夜">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://wtrainm.github.io/2026/05/29/php反序列化/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php反序列化">
+<meta property="og:url" content="https://wtrainm.github.io/2026/05/29/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
+<meta property="og:site_name" content="梧桐蔽日,雨夜长鸣">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wtrainm.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2026-05-29T13:09:00.000Z">
+<meta property="article:modified_time" content="2026-06-05T14:15:00.669Z">
+<meta property="article:author" content="梧桐">
+<meta property="article:tag" content="php">
+<meta property="article:tag" content="反序列化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wtrainm.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/123.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/123.jpg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/123.jpg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            php反序列化 | 日常分享,祝大家天天开心!!!
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+        <link href="" rel="stylesheet">
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"wtrainm.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"梧桐蔽日,雨夜长鸣","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":[{"icon":"fa-brands fa-github","url":null},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":true,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2022/8/17 11:45:14","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2022/8/17 11:45:14","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.i18n = {"search":"站内搜索您需要的内容...","toc":"目录","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","post":"文章","posts":"文章","tagcloud":"标签云","comment":"评论","comments":"评论","top":"置顶","sticky":"置顶","go-back-home":"回到首页","masonry_loading":"照片加载中...","image_viewer":"图片查看器","close":"关闭","exif":{"title":"EXIF","cards":{"camera":"相机","lens":"镜头","exposure":"曝光","other":"其他"},"fields":{"make":"品牌","model":"机型","date_taken":"拍摄时间","lens_model":"镜头","focal_length":"焦距","focus_mode":"对焦模式","shutter":"快门","aperture":"光圈","iso":"感光度","exposure_program":"曝光程序","exposure_compensation":"曝光补偿","metering_mode":"测光模式","flash":"闪光灯","white_balance":"白平衡","latitude":"纬度","longitude":"经度","altitude":"海拔"},"status":{"loading":"加载中...","no_exif":"无 EXIF 信息","library_missing":"EXIF 库未加载","image_source_missing":"图片地址不可用","unavailable":"EXIF 不可用（可能被 CORS 阻止或缺少元数据）","flag_unavailable":"EXIF 不可用"}},"home":"首页","archive":"归档","archives":"归档","about":"关于","links":"链接","link":"链接","friends":"友情链接","friend":"友情链接","timeline":"时间轴","shuoshuo":"说说","bookmarks":"书签","site_uv":"访问人数","site_pv":"总访问量","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","status":"状态","runtime":"博客已运行","days":"天","hours":"小时","minutes":"分钟","seconds":"秒","optimized_by":"并由 Evan 进行优化","rights":"版权所有","site_posts":"共撰写了 %s 篇文章","site_wordcount":"共 %s 字","copyright":{"title":"标题","author":"作者","link":"链接","create_time":"创建于","update_time":"更新于","license_title":"版权声明","license_content":"本文章采用 %s 进行许可。","all_rights_reserved":"版权所有 &#169 %s，禁止转载。","public_domain":"本文为公有领域作品，可自由转载、引用。"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"},"create_time":"创建","update_time":"更新","expired":"这篇文章最后更新于 %s 天前，内容可能已经过时。"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                日常分享,祝大家天天开心!!!
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">21</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">14</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">24</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">php反序列化</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images/123.jpg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">梧桐夜</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-05-29 21:09</span>
+        <span class="mobile">2026-05-29 21:09</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-06-05 22:15</span>
+            <span class="mobile">2026-06-05 22:15</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/php/">php</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/php/">php</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">反序列化</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h3 id="php反序列化">php反序列化</h3>
+<h4 id="echo-print-print-f-var-dump区别">echo,print,print_f,var_dump区别</h4>
+<ul>
+<li>echo: 输出一个或者多个字符串。</li>
+<li>print: 仅支持一个参数，并总是返回 1。</li>
+<li>print_r: 打印关于变量的易于理解的信息,如果给出的是 string、integer 或 float，将打印变量值本身。如果给出的是 array，将会按照一定格式显示键和元素。object 与数组类似。 记住，print_r() 将把数组的指针移到最后边。使用 reset() 可让指针回到开始处。</li>
+<li>var_dump: 此函数显示关于一个或多个表达式的结构信息，包括表达式的类型与值。数组将递归展开值，通过缩进显示其结构。</li>
+<li>var_dump 和 print_r 的区别
+<ul>
+<li>var_dump 返回表达式的类型与值而 print_r 仅返回结果，相比调试代码使用 var_dump 更便于阅读。</li>
+</ul>
+</li>
+</ul>
+<h4 id="面向过程vs面向对象">面向过程vs面向对象</h4>
+<ul>
+<li>面向过程: 面向过程是以&quot;整体事件&quot;为中心的变成思想,变成的时候把解决问题的步骤分析出来,然后用函数把这些步骤实现,在一步一步的具体步骤中再按顺序调用函数</li>
+<li>面向对象: 面向对象是一种以&quot;对象&quot;为中心的编程思想,把要解决的问题分解成各个&quot;对象&quot;,对象是一个由信息及对信息进行处理的描述所组成的整体,是对现实世界的抽象</li>
+<li>对象的三个特征: 对象的行为,对象的形态,对象的表示</li>
+</ul>
+<h4 id="类的定义">类的定义</h4>
+<ul>
+<li>
+<p>类是定义了一件事物的抽象特点,它将数据的形式以及这些数据上的操作封装在一起.</p>
+</li>
+<li>
+<p>对象是具有类类型的变量,是对类的实例(水果是一个类,而苹果是一个对象,苹果是水果这个类的一个实例,具有水果这个类的特点)</p>
+</li>
+<li>
+<p>内部构成: 成员变量(属性) +成员函数(方法)</p>
+<ul>
+<li>成员变量: 定义在类内部的变量,该变量的值对外是不可见的,但是可以通过成员函数访问,在类被实例化为对象后,该变量即可成为对象的属性.</li>
+<li>成员函数: 定义在类的内部,可用于访问对象的数据</li>
+</ul>
+</li>
+</ul>
+<h4 id="继承">继承</h4>
+<ul>
+<li>继承: 继承性是子类自动共享父类数据结构和方法的机制,是类之间的一种关系.
+<ul>
+<li>在定义和实现一个类的时候, 可以在一个已经存在的类的基础之上来进行,把一个已经存在的类所定义的内容作为自己的内容,并加入若干新的内容</li>
+</ul>
+</li>
+<li>父类: 一个类被其他类继承,可将该类称为父类,或基类,超类</li>
+<li>子类: 一个类继承其他类称称为子类,也可成为派生类</li>
+</ul>
+<h4 id="类的结构">类的结构</h4>
+<ul>
+<li>类的修饰符介绍
+<ul>
+<li>在类中直接声明的变量称为成员属性(也可以称为成员变量)</li>
+<li>可以在类中声明多个变量,即&quot;对象&quot;中可以有多个成员属性,每个变量都存储&quot;对象&quot;不同的属性信息</li>
+</ul>
+</li>
+<li>访问权限修饰符: 对属性的定义
+<ul>
+<li>public: 公共的,在类的内部,子类中 或者类的外部都可以使用,不受限制;</li>
+<li>protected: 受保护的,在类的内部,子类中可以使用,但不能在类的外部使用;</li>
+<li>private: 私有的,只能在类的内部使用,在类的外部或者子类都无法使用</li>
+<li><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.5.30.png"
+                      alt=""
+                ></li>
+</ul>
+</li>
+</ul>
+<h4 id="类与对象">类与对象</h4>
+<ul>
+<li>类是对象的抽象,而对象是类的具体实例</li>
+<li>类是想法,把类实例化(new),调用具体值后就变成了对象</li>
+</ul>
+<h4 id="类的成员方法">类的成员方法</h4>
+<ul>
+<li>在类中定义的函数被称为长远方法</li>
+<li>函数实现的就是某个独立的功能</li>
+<li>成员方法实现的是类中的一个行为,是类的一部分</li>
+<li>可以在类中声明多个成员方法,成员方法的声明和函数声明完全一样,只不过在声明成员方法时可以在function关键字前加一些访问权限修饰符,如public,protected,public</li>
+</ul>
+<h4 id="序列化的作用">序列化的作用</h4>
+<ul>
+<li>序列化是将对象的状态信息(属性)转换为可以存储或传输的形式的过程</li>
+<li>将对象或者数组转化为可存储/传输的字符</li>
+<li>在php中使用函数serialize()来将对象或者数组进行序列化,并返回一个包含字节流的字符串来表示</li>
+</ul>
+<h4 id="表达方式">表达方式</h4>
+<p><code>&lt;?php $a = null; echo serialize($a); ?&gt;</code></p>
+<ul>
+<li>
+<p>所有格式第一位都是数据类型的英文字母简写</p>
+</li>
+<li>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.5.30.2.png"
+                      alt=""
+                ></p>
+</li>
+<li>
+<p>对象的序列化: 不能序列化’类’,可以序列化’对象’</p>
+</li>
+<li>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.5.30.3.png"
+                      alt=""
+                ></p>
+</li>
+<li>
+<p>private私有属性序列化时,在变量名前加&quot;%00&quot;类名%00&quot;(%00是空)</p>
+</li>
+</ul>
+<h4 id="反序列的作用">反序列的作用</h4>
+<ul>
+<li>反序列化之后的内容为一个对象</li>
+<li>反序列化生成的对象里的值,由反序列化里的值提供;与原有类预定义的值无关</li>
+<li>反序列化不触发类的成员方法;需要调用方法后才能触发(魔术方法除外)</li>
+</ul>
+<h4 id="反序列化的作用">反序列化的作用</h4>
+<ul>
+<li>将序列化后的参数还原成实例化的对象</li>
+<li>反序列化生成的对象里的值,由反序列化里的值提供,与原有类预定义的值无关</li>
+</ul>
+<h4 id="反序列化漏洞">反序列化漏洞</h4>
+<ul>
+<li>反序列化漏洞的成因: 反序列化过程中,unserialize()接收的值(字符串)可控;通过更改这个值(字符串),得到所需要的代码,即生成对象的属性值</li>
+<li>反序列化不改变类的成员方法;需要调用方法后才能触发</li>
+</ul>
+<h4 id="反序列化格式">反序列化格式</h4>
+<ul>
+<li><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.5.31.1.png"
+                      alt=""
+                ></li>
+<li>实例:<code>class User {   public $username = &quot;alice&quot;;   protected $password = &quot;secret123&quot;;   private $id = 42; } $obj = new User(); // 写出 serialize($obj) 的结果 o:4:&quot;user&quot;:{s:8:&quot;username&quot;;s:5:&quot;alice&quot;;s:8:&quot;%00*%00password&quot;;s:9:secret123;s:8:&quot;%00user%00id&quot;;i:42;}</code></li>
+<li>protected序列化的时候要在前面加%00*%00</li>
+<li>private序列化的时候要在前面加上%00类名%00</li>
+</ul>
+<h3 id="魔术方法">魔术方法</h3>
+<h4 id="什么是魔术方法">什么是魔术方法</h4>
+<ul>
+<li>一个预定义好的,在特定情况下自动触发的行为方法</li>
+</ul>
+<h4 id="魔术方法的作用">魔术方法的作用</h4>
+<ul>
+<li>反序列化漏洞的成因: 反序列化过程中,unserialize()接收的值(字符串)可控;
+<ul>
+<li>通过更改这个值(字符串),得到所需要的代码;</li>
+<li>通过调用方法,触发代码执行</li>
+</ul>
+</li>
+<li>魔术方法在特定条件下自动调用相关方法,最终导致触发代码</li>
+</ul>
+<h4 id="魔术方法相关机制">魔术方法相关机制</h4>
+<ul>
+<li>触发时机,功能,参数,返回值</li>
+</ul>
+<h4 id="详解">详解</h4>
+<ul>
+<li>
+<p>__construct</p>
+<ul>
+<li>构造函数,在实例化一个对象的时候,首先会去自动执行的一个方法</li>
+<li>触发时机: 实例化对象</li>
+<li>功能: 提前清理不必要内容</li>
+<li>参数: 非必要</li>
+<li>返回值:</li>
+</ul>
+</li>
+<li>
+<p>__destruct()</p>
+<ul>
+<li>析构函数,在对象的所有引用被删除或者当对象被显式销毁时执行的魔术方法</li>
+</ul>
+</li>
+<li>
+<p>__sleep</p>
+<ul>
+<li>序列化seialize()函数会检查类中是否存在一个魔术方法__sleep().如果存在,该方法会被先调用,然后才执行序列化操作</li>
+</ul>
+</li>
+<li>
+<p>__wakeup()</p>
+<ul>
+<li>unserialize()会检查是否存在一个__wakeup()方法,如果存在,则会先调用__wakeup()方法,预先准备对象需要的资源.预先准备对象资源,返回void,常用于反序列化操作中重新建立数据库连接或执行其他初始化操作</li>
+<li>触发时机: 反序列化unserialize()之前</li>
+</ul>
+</li>
+<li>
+<p>__tostring()</p>
+<ul>
+<li>表达方式错误导致魔术方法触发</li>
+<li>触发时机: 把对象当成字符串调用</li>
+</ul>
+</li>
+<li>
+<p>__invoke()</p>
+<ul>
+<li>表达方式错误导致魔术方法触发</li>
+<li>触发时机: 把对象当成函数调用</li>
+</ul>
+</li>
+<li>
+<p>__call()</p>
+<ul>
+<li>触发时机: 调用一个不存在的方法</li>
+<li>功能</li>
+<li>参数: 2个参数传参$arg1,$arg2</li>
+<li>返回值: 调用的不存在的方法的名字和参数</li>
+<li>静态调用::时的方法callxxx()不存在</li>
+</ul>
+</li>
+<li>
+<p>__callstatic()</p>
+</li>
+<li>
+<p>触发时机: 静态调用或调用成员常量时使用的方法不存在</p>
+</li>
+<li>
+<p>功能:</p>
+</li>
+<li>
+<p>参数: 两个参数传参$arg1,$arg2</p>
+</li>
+<li>
+<p>返回值: 调用的不存在的方法的名称和参数</p>
+</li>
+<li>
+<p>__get()</p>
+<ul>
+<li>触发时机: 调用的成员属性不存在</li>
+<li>功能:</li>
+<li>参数: 传参$arg1</li>
+<li>返回值: 不存在的成员属性的名称</li>
+</ul>
+</li>
+<li>
+<p>__set()</p>
+<ul>
+<li>触发时机: 给不存在的成员属性赋值</li>
+<li>功能:</li>
+<li>参数:</li>
+<li>返回值: 不存在的成员属性的名称</li>
+</ul>
+</li>
+<li>
+<p>__isset()</p>
+<ul>
+<li>触发时机：对不可访问属性使用isset()或者empty()时</li>
+<li>参数：传参$arg1</li>
+<li>返回值：不存在的成员属性名称</li>
+</ul>
+</li>
+<li>
+<p>__unset()</p>
+<ul>
+<li>触发时机：对不可访问属性使用unset()时</li>
+<li>参数：传参$arg1</li>
+<li>返回值：不存在的成员属性名称</li>
+</ul>
+</li>
+<li>
+<p>__clone()</p>
+<ul>
+<li>触发时机：当使用clone关键字拷贝完成一个对象后，新对象会自动调用定义的魔术方法</li>
+</ul>
+</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.6.1.png"
+                      alt=""
+                ></p>
+<h4 id="wakeup-绕过-php5-5-6-25php7-7-0-10">__wakeup()绕过(php5&lt;5.6.25	php7&lt;7.0.10)</h4>
+<ul>
+<li>漏洞产生原因
+<ul>
+<li>如果存在__wakeup方法,调用unserilize()方法前则先调用__wakeup方法,但是序列化字符串中表示对象属性个数的值大于真实的属性个数时,会跳过__wakeup()的执行</li>
+</ul>
+</li>
+<li>如果正则表达式要求o:后面不能加数字,那么可以尝试在o:后面加上<code>+</code>,然后用<code>urlencode('')</code>编码一下再提交</li>
+</ul>
+<h4 id="pop链">pop链</h4>
+<ul>
+<li>
+<p>在反序列化中,我们能控制的数据就是对象中的属性值(成员变量),所以在php反序列化中有一种漏洞利用方法叫&quot;面向属性编程&quot;</p>
+</li>
+<li>
+<p>pop链就是利用魔法方法在里面进行多次跳转然后获取敏感数据的一种playload</p>
+</li>
+<li>
+<p>poc编写</p>
+<ul>
+<li>翻译后为概念验证,在安全界可以理解成漏洞验证程序.poc是一段不完整的程序,仅仅是为了证明提出者观点的一段代码.</li>
+</ul>
+</li>
+</ul>
+<h3 id="字符串逃逸">字符串逃逸</h3>
+<ul>
+<li>反序列化分隔符
+<ul>
+<li>反序列化以;}结束,后面的字符串不影响正常的反序列化</li>
+</ul>
+</li>
+<li>属性逃逸
+<ul>
+<li>一般在数据先经历一次serialize再经过unserialize,在这个中间反序列化的字符串变多或者变少的时候有可能存在反序列化属性逃逸</li>
+</ul>
+</li>
+</ul>
+<h4 id="减少逃逸">减少逃逸</h4>
+<ul>
+<li>多逃逸出一个成员属性,第一个字符串减少,吃掉有效代码,在第二个字符串构造代码</li>
+<li>如果序列化后用str_replace来将某个字符替换为空,但是原先序列化出来的长度不变,就会将后面的功能性代码 吃掉变成字符串.我们通过构造字符串,从而达到字符串逃逸的效果</li>
+</ul>
+<h4 id="增多逃逸">增多逃逸</h4>
+<ul>
+<li>构造出一个逃逸成员属性第一个字符串增多,吐出多余代码,把多余代码构造成逃逸的成员属性</li>
+<li>如果序列化后用str_replace来将某个较少字符替换成较多字符.那么原先字符后面的部分数据会被逃逸出来,通过构建后面的功能性代码,来实现字符串逃逸的功能,(记得用;}去闭合前面的结构,在此之后的代码在;}之外,被忽略,所以不用修改参数的数量)</li>
+</ul>
+<h4 id="session反序列化漏洞">session反序列化漏洞</h4>
+<ul>
+<li>
+<p>当session_start()被调用或者php.ini中session,auto_start为1时,php内部调用会话管理器,访问用户session被序列化以后,存储到指定目录(默认为/tmp)</p>
+</li>
+<li>
+<p>存取数据的格式有多种,常用的有三种</p>
+</li>
+<li>
+<p>漏洞产生: 写入格式和读取格式不一致<br>
+|处理器|对应的存储格式|<br>
+|—|—|<br>
+|php|键名+竖线+经过serialize()函数序列化处理的值|<br>
+|php_serialize(php&gt;=5.5.4)|经过serialize()函数序列化处理的数组|<br>
+|php_binary|键名的长度对应的ASCII字符+键名+经过serialize()函数反序列处理的值|</p>
+</li>
+<li>
+<p>使用session存储格式为php_serialize时要进行声明</p>
+<ul>
+<li>例如:<br>
+<code>&lt;?php ini_set('session.serialize_handler','php_serialize'); session_start(); $_SESSION['benben'] = $_GET['ben'; $_SESSION['b'] = $_GET['b']; ?&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>声明session存储格式为php_binary</p>
+</li>
+<li>
+<p>例如:<br>
+<code>&lt;?php ini_set('session.serialize_handler','php_binary'); session_start(); $_SESSION['benben'] = $_GET['ben'; $_SESSION['b'] = $_GET['b']; ?&gt;</code></p>
+</li>
+</ul>
+<h3 id="phar反序列化漏洞">phar反序列化漏洞</h3>
+<h4 id="什么是phar">什么是phar</h4>
+<ul>
+<li>JAR是开发java程序一个应用,包括所有的可执行,可访问的文件,都打包进了一个JAR文件里,使得部署过程十分简单.</li>
+<li><code>like a java,but foe PHP</code></li>
+<li>PHAR是php里类似于JAR的一种打包文件,对于PHP 5.3或者更高版本,Phar后缀文件是默认开启支持的,可以直接使用它
+<ul>
+<li>文件包含: phar伪协议, 可读取 .phar文件</li>
+</ul>
+</li>
+</ul>
+<h4 id="phar结构">phar结构</h4>
+<ul>
+<li>
+<p>stub phar 文件标识,格式为 <code>xxx&lt;?php xxx;__HALT_COMPiLER();?&gt;;</code>(头部信息)</p>
+</li>
+<li>
+<p><strong>manifest 压缩文件的属性等信息,以序列化存储;</strong></p>
+</li>
+<li>
+<p>contents 压缩文件的内容;</p>
+</li>
+<li>
+<p>signature 签名,放在文件末尾;</p>
+</li>
+<li>
+<p>phar协议解析文件时,会自动触发对manifest字段的序列化字符串进行反序列化</p>
+</li>
+<li>
+<p>压缩;<br>
+<code>&lt;?php $phar = new phar('test2.phar',0,'test2.phar');		#产生一个siam.phar文件 $phar-&gt;buildfromDirectory('f:\0Day');		#添加src里面的所有文件到siam.phar归档文件 $phar-&gt;setDefaultStub('test.txt','test.txt');		#设置执行时的入口文件,第一个用于命令行,第二个用于浏览器访问,这哭都设置为 'hello.php'</code></p>
+</li>
+<li>
+<p>解压缩<br>
+`&lt;?php<br>
+$phar = new phar(‘test.phar’);<br>
+$phar-&gt;extractTo(‘test’);</p>
+</li>
+</ul>
+<h4 id="phar漏洞原理-在访问phar路径的时候-要在phar后面加上-其为分隔符-不适用它的话-浏览器会把phar当成普通文件路径去访问-无法解析phar文件">phar漏洞原理(在访问phar路径的时候,要在phar后面加上<code>://</code>,其为分隔符,不适用它的话,浏览器会把phar当成普通文件路径去访问,无法解析phar文件)</h4>
+<ul>
+<li>manifest 压缩文件的属性等信息,以序列化存储;存在一段序列化的字符串;</li>
+<li>调用phar伪协议,可读取 .phar文件;</li>
+<li>phar协议解析文件时,会自动触发对manifest字段的序列化字符串进行反序列化.(phar需要php&gt;=5.2在php.ini中将phar.readonly设为off(注意去掉前面的分号)</li>
+<li>受影响的函数
+<ul>
+<li><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/26.6.5.1.png"
+                      alt=""
+                ></li>
+</ul>
+</li>
+</ul>
+<h4 id="phar使用条件">phar使用条件</h4>
+<ul>
+<li>phar文件能上传到服务器端(修改phar后缀不影响文件执行)</li>
+<li>要有可用反序列化魔术方法作为跳板</li>
+<li>要有文件操作函数, 如file_exists(), fopen(), file_get_contents()</li>
+<li>文件操作函数参数可控,切:,/,phar等特殊字符没有被过滤</li>
+</ul>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> php反序列化</li>
+        <li><strong>作者:</strong> 梧桐夜</li>
+        <li><strong>创建于
+                :</strong> 2026-05-29 21:09:00</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2026-06-05 22:15:00
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://redefine.ohevan.com/2026/05/29/php反序列化/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/php/">#php</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">#反序列化</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2026/06/06/ssti/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">SSTI</span>
+						<span class="post-nav-item">上一篇</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2026/05/29/%E5%81%9A%E9%A2%98%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">sql以及文件一点补充</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.js';
+
+      (function() {
+        const startPath = location.pathname;
+        const startTime = Date.now();
+        const retryDelay = 200;
+        const retryLimit = 5000;
+
+        const runWaline = () => {
+          if (location.pathname !== startPath) {
+            return;
+          }
+
+          const container = document.getElementById('waline');
+          if (!container) {
+            if (Date.now() - startTime < retryLimit) {
+              setTimeout(runWaline, retryDelay);
+            }
+            return;
+          }
+
+          if (window.redefineWalineInstance?.destroy) {
+            window.redefineWalineInstance.destroy();
+          }
+
+          container.innerHTML = '';
+          window.redefineWalineInstance = init({
+            el: '#waline',
+            serverURL: 'https://example.example.com',
+            path: location.pathname,
+            dark: 'body[class~="dark-mode"]',
+            reaction: false,
+            requiredMeta: ['nick', 'mail'],
+            emoji: [],
+                      lang: 'zh-CN',
+          });
+        };
+
+        runWaline();
+      })();
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">php反序列化</div>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-text">php反序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="nav-text">魔术方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8"><span class="nav-text">字符串逃逸</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="nav-text">phar反序列化漏洞</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">梧桐夜</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 24 篇文章
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="图片查看器">
+	<button class="image-viewer-close" type="button" aria-label="关闭">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="上一页">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="关闭">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="下一页">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>

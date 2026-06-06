@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <!-- 柔和渐变天空 -->
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FDE8F0"/>
+      <stop offset="35%" stop-color="#FCE4EC"/>
+      <stop offset="60%" stop-color="#E8D5F5"/>
+      <stop offset="85%" stop-color="#D4E8F5"/>
+      <stop offset="100%" stop-color="#F0E6F6"/>
+    </linearGradient>
+    <!-- 云朵渐变 -->
+    <radialGradient id="cloud1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cloud2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <!-- 光晕 -->
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF5E6" stop-opacity="0.6"/>
+      <stop offset="40%" stop-color="#FFE4B5" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#FFE4B5" stop-opacity="0"/>
+    </radialGradient>
+    <!-- 花瓣渐变 -->
+    <linearGradient id="petalGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFB7C5"/>
+      <stop offset="100%" stop-color="#FF8FA3"/>
+    </linearGradient>
+    <linearGradient id="petalGrad2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFD1DC"/>
+      <stop offset="100%" stop-color="#FFB7C5"/>
+    </linearGradient>
+  </defs>
+  <!-- 天空背景 -->
+  <rect width="1600" height="900" fill="url(#skyGrad)"/>
+  
+  <!-- 太阳光晕 -->
+  <circle cx="300" cy="200" r="250" fill="url(#sunGlow)"/>
+  <circle cx="300" cy="200" r="50" fill="#FFF5E6" opacity="0.4"/>
+  
+  <!-- 云朵 -->
+  <g fill="url(#cloud1)">
+    <ellipse cx="200" cy="180" rx="80" ry="30"/>
+    <ellipse cx="260" cy="170" rx="60" ry="25"/>
+    <ellipse cx="150" cy="175" rx="50" ry="22"/>
+  </g>
+  <g fill="url(#cloud2)">
+    <ellipse cx="900" cy="150" rx="90" ry="28"/>
+    <ellipse cx="970" cy="140" rx="65" ry="22"/>
+    <ellipse cx="840" cy="145" rx="55" ry="20"/>
+  </g>
+  <g fill="url(#cloud1)" opacity="0.5">
+    <ellipse cx="500" cy="200" rx="70" ry="24"/>
+    <ellipse cx="555" cy="195" rx="50" ry="20"/>
+  </g>
+  <g fill="url(#cloud2)" opacity="0.4">
+    <ellipse cx="1200" cy="170" rx="75" ry="22"/>
+    <ellipse cx="1260" cy="162" rx="55" ry="18"/>
+  </g>
+
+  <!-- 飘浮的小星星/光点 -->
+  <g fill="#FFD1DC" opacity="0.6">
+    <circle cx="150" cy="100" r="2.5"/><circle cx="350" cy="80" r="2"/>
+    <circle cx="500" cy="120" r="3"/><circle cx="700" cy="90" r="2"/>
+    <circle cx="850" cy="110" r="2.5"/><circle cx="1000" cy="80" r="1.8"/>
+    <circle cx="1200" cy="100" r="2.5"/><circle cx="1400" cy="95" r="2"/>
+  </g>
+  <g fill="#C9B1FF" opacity="0.4">
+    <circle cx="250" cy="140" r="2"/><circle cx="600" cy="160" r="1.5"/>
+    <circle cx="950" cy="130" r="2"/><circle cx="1300" cy="150" r="1.8"/>
+  </g>
+
+  <!-- 樱花树枝（主要从左侧延伸） -->
+  <!-- 主干 -->
+  <g fill="none" stroke="#8B6914" stroke-width="3" stroke-linecap="round" opacity="0.5">
+    <path d="M0 500 Q50 480 120 450 Q180 420 220 380"/>
+    <path d="M100 460 Q140 430 170 390"/>
+    <path d="M150 420 Q180 380 200 340"/>
+    <path d="M220 380 Q250 350 280 320"/>
+    <path d="M200 340 Q220 310 240 280"/>
+  </g>
+  
+  <!-- 右侧小枝 -->
+  <g fill="none" stroke="#8B6914" stroke-width="2" stroke-linecap="round" opacity="0.4">
+    <path d="M1550 350 Q1500 370 1450 400 Q1400 420 1350 450"/>
+  </g>
+
+  <!-- 樱花花朵 -->
+  <g>
+    <!-- 左侧簇 1 -->
+    <circle cx="120" cy="445" r="6" fill="#FFB7C5" opacity="0.8"/>
+    <circle cx="128" cy="438" r="5" fill="#FFD1DC" opacity="0.9"/>
+    <circle cx="115" cy="436" r="5" fill="#FFC0CB" opacity="0.7"/>
+    <circle cx="125" cy="448" r="4" fill="#FFE4E8" opacity="0.8"/>
+    
+    <!-- 左簇 2 -->
+    <circle cx="180" cy="410" r="6" fill="#FFB7C5" opacity="0.8"/>
+    <circle cx="188" cy="405" r="5" fill="#FFD1DC" opacity="0.9"/>
+    <circle cx="175" cy="403" r="5" fill="#FFC0CB" opacity="0.7"/>
+    <circle cx="185" cy="415" r="4" fill="#FFE4E8" opacity="0.8"/>
+    
+    <!-- 左簇 3 -->
+    <circle cx="220" cy="375" r="6" fill="#FFB7C5" opacity="0.8"/>
+    <circle cx="228" cy="368" r="5" fill="#FFD1DC" opacity="0.9"/>
+    <circle cx="215" cy="366" r="5" fill="#FFC0CB" opacity="0.7"/>
+    
+    <!-- 顶部簇 -->
+    <circle cx="200" cy="335" r="5" fill="#FFB7C5" opacity="0.8"/>
+    <circle cx="208" cy="330" r="4" fill="#FFD1DC" opacity="0.9"/>
+    <circle cx="240" cy="275" r="5" fill="#FFB7C5" opacity="0.7"/>
+    <circle cx="247" cy="270" r="4" fill="#FFD1DC" opacity="0.8"/>
+    
+    <!-- 右枝樱花 -->
+    <circle cx="1450" cy="395" r="5" fill="#FFB7C5" opacity="0.6"/>
+    <circle cx="1445" cy="388" r="4" fill="#FFD1DC" opacity="0.7"/>
+    <circle cx="1400" cy="420" r="5" fill="#FFB7C5" opacity="0.5"/>
+    
+    <!-- 花瓣中心 -->
+    <circle cx="122" cy="440" r="2" fill="#FF6B8A" opacity="0.4"/>
+    <circle cx="183" cy="408" r="2" fill="#FF6B8A" opacity="0.4"/>
+    <circle cx="222" cy="373" r="2" fill="#FF6B8A" opacity="0.4"/>
+    <circle cx="203" cy="333" r="1.5" fill="#FF6B8A" opacity="0.4"/>
+  </g>
+
+  <!-- 飘落的花瓣 -->
+  <g opacity="0.6">
+    <ellipse cx="300" cy="320" rx="4" ry="2.5" fill="#FFB7C5" transform="rotate(25 300 320)"/>
+    <ellipse cx="380" cy="280" rx="3.5" ry="2" fill="#FFD1DC" transform="rotate(-15 380 280)"/>
+    <ellipse cx="450" cy="350" rx="4" ry="2.5" fill="#FFC0CB" transform="rotate(40 450 350)"/>
+    <ellipse cx="280" cy="400" rx="3" ry="2" fill="#FFB7C5" transform="rotate(-30 280 400)"/>
+    <ellipse cx="420" cy="450" rx="3.5" ry="2" fill="#FFD1DC" transform="rotate(20 420 450)"/>
+    <ellipse cx="520" cy="310" rx="3" ry="2" fill="#FFC0CB" transform="rotate(-10 520 310)"/>
+    
+    <ellipse cx="1100" cy="250" rx="3.5" ry="2" fill="#FFB7C5" transform="rotate(35 1100 250)"/>
+    <ellipse cx="1250" cy="300" rx="3" ry="2" fill="#FFD1DC" transform="rotate(-20 1250 300)"/>
+    <ellipse cx="1350" cy="280" rx="4" ry="2.5" fill="#FFC0CB" transform="rotate(15 1350 280)"/>
+  </g>
+
+  <!-- 地面柔和阴影 -->
+  <ellipse cx="800" cy="870" rx="500" ry="40" fill="#E8D5F5" opacity="0.3"/>
+  
+  <!-- 底部柔光 -->
+  <rect x="0" y="800" width="1600" height="100" fill="#F0E6F6" opacity="0.5"/>
+</svg>

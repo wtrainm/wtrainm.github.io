@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2d2d5e"/>
+      <stop offset="100%" stop-color="#6C5CE7"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="url(#bg)"/>
+  <!-- Simplified wutong tree -->
+  <g fill="#0d0d1a" opacity="0.85">
+    <path d="M31 56 L30 38 L31 36 L32 35 L33 36 L34 38 L33 56 Z"/>
+    <ellipse cx="24" cy="38" rx="10" ry="7"/>
+    <ellipse cx="32" cy="32" rx="8" ry="6"/>
+    <ellipse cx="40" cy="38" rx="10" ry="7"/>
+  </g>
+  <!-- Stars -->
+  <circle cx="12" cy="12" r="1.5" fill="#fff" opacity="0.7"/>
+  <circle cx="50" cy="10" r="1" fill="#fff" opacity="0.5"/>
+  <circle cx="8" cy="28" r="1" fill="#fff" opacity="0.4"/>
+  <circle cx="55" cy="20" r="1.2" fill="#fff" opacity="0.6"/>
+</svg>
